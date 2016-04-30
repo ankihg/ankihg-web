@@ -1,9 +1,9 @@
 <title>AnkiHg - world wide wilderness2</title>
 <head>
-<link rel="stylesheet" type="text/css" href="../styles/home.css">
+<link rel="stylesheet" type="text/css" href="styles/home.css">
 <link type="text/css" rel="StyleSheet" href="http://s102.ucoz.net/src/social.css" />
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
-<script src="../vendors/jquery.simpleWeather.js"></script>
+<script src="vendors/jquery.simpleWeather.js"></script>
 </head>
 <html>
 
@@ -111,7 +111,7 @@ function adjustToTime(simpWeather) {
  img.onload = function () {
  context.drawImage(img, 0, 0, rect.width, rect.height);
  }
- img.src = "/mountains/nightveil.png";
+ img.src = "../media/nightveil.png";
  } else {
  daytime = "day";
  }
@@ -146,11 +146,11 @@ function updateTitle() {
 function enterMouse(id) {
  var r = Math.random()*3;
  if (r < 1) {
- var img = '<img src="/mountains/flag.gif">';
+ var img = '<img src="../media/flags/flag_red.gif">';
  } else if (r < 2) {
- var img = '<img src="/mountains/flag_blue.gif">';
+ var img = '<img src="../media/flags/flag_blue.gif">';
  } else {
- var img = '<img src="/mountains/flag_yellow.gif">';
+ var img = '<img src="../media/flags/flag_yellow.gif">';
  }
  document.getElementById(id).innerHTML = img;
 }
@@ -185,7 +185,7 @@ function printMousePos(e) {
 // context.drawImage(img, x/4.3, y/4.7, 30, 40);
  context.drawImage(img, x/4.3-15, y/4.7-35, 30, 40);
  }
- img.src = "/mountains/tree3.png";
+ img.src = "../media/tree.png";
 
 
 }
@@ -256,15 +256,15 @@ var Fish = function(x, y) {
 
 Fish.fishes = [];
 
-Fish.frames = ["/mountains/fish/fish1.png", "/mountains/fish/fish2.png", "/mountains/fish/fish3.png", "/mountains/fish/fish4.png", "/mountains/fish/fish5.png", "/mountains/fish/fish6.png", "/mountains/fish/fish7.png", "/mountains/fish/fish8.png", "/mountains/fish/fish9.png"];
+Fish.frames = ["../media/fish/fish1.png", "../media/fish/fish2.png", "../media/fish/fish3.png", "../media/fish/fish4.png", "../media/fish/fish5.png", "../media/fish/fish6.png", "../media/fish/fish7.png", "../media/fish/fish8.png", "../media/fish/fish9.png"];
 
-Fish.framesR = ["/mountains/fish/fishr1.png", "/mountains/fish/fishr2.png", "/mountains/fish/fishr3.png", "/mountains/fish/fishr4.png", "/mountains/fish/fishr5.png", "/mountains/fish/fishr6.png", "/mountains/fish/fishr7.png", "/mountains/fish/fishr8.png", "/mountains/fish/fish9.png"];
+Fish.framesR = ["../media/fish/fishr1.png", "../media/fish/fishr2.png", "../media/fish/fishr3.png", "../media/fish/fishr4.png", "../media/fish/fishr5.png", "../media/fish/fishr6.png", "../media/fish/fishr7.png", "../media/fish/fishr8.png", "../media/fish/fish9.png"];
 
-Fish.framesO = ["/mountains/fish/fisho1.png", "/mountains/fish/fisho2.png", "/mountains/fish/fisho3.png", "/mountains/fish/fisho4.png", "/mountains/fish/fisho5.png", "/mountains/fish/fisho6.png", "/mountains/fish/fisho7.png", "/mountains/fish/fisho8.png", "/mountains/fish/fish9.png"];
+Fish.framesO = ["../media/fish/fisho1.png", "../media/fish/fisho2.png", "../media/fish/fisho3.png", "../media/fish/fisho4.png", "../media/fish/fisho5.png", "../media/fish/fisho6.png", "../media/fish/fisho7.png", "../media/fish/fisho8.png", "../media/fish/fish9.png"];
 
-Fish.framesP = ["/mountains/fish/fishp1.png", "/mountains/fish/fishp2.png", "/mountains/fish/fishp3.png", "/mountains/fish/fishp4.png", "/mountains/fish/fishp5.png", "/mountains/fish/fishp6.png", "/mountains/fish/fishp7.png", "/mountains/fish/fishp8.png", "/mountains/fish/fish9.png"];
+Fish.framesP = ["../media/fish/fishp1.png", "../media/fish/fishp2.png", "../media/fish/fishp3.png", "../media/fish/fishp4.png", "../media/fish/fishp5.png", "../media/fish/fishp6.png", "../media/fish/fishp7.png", "../media/fish/fishp8.png", "../media/fish/fish9.png"];
 
-Fish.framesG = ["/mountains/fish/fishg1.png", "/mountains/fish/fishg2.png", "/mountains/fish/fishg3.png", "/mountains/fish/fishg4.png", "/mountains/fish/fishg5.png", "/mountains/fish/fishg6.png", "/mountains/fish/fishg7.png", "/mountains/fish/fishg8.png", "/mountains/fish/fish9.png"];
+Fish.framesG = ["../media/fish/fishg1.png", "../media/fish/fishg2.png", "../media/fish/fishg3.png", "../media/fish/fishg4.png", "../media/fish/fishg5.png", "../media/fish/fishg6.png", "../media/fish/fishg7.png", "../media/fish/fishg8.png", "../media/fish/fish9.png"];
 
 
 
@@ -350,7 +350,7 @@ var Tree = function(x, y) {
  if (weather=="snow") {
  this.imgSrc = "/mountains/snowtree2.png";
  } else {
- this.imgSrc = "/mountains/tree3.png";
+ this.imgSrc = "../media/tree.png";
  }
 }
 
@@ -456,9 +456,9 @@ var Cloud = function () {
  //this.widthDiv = (Math.random()*20 + 10);
  //this.heightDiv = (Math.random()*2 + 2);
  this.speed = Math.random() * (Cloud.windspeed) + Cloud.windspeed/2;
- this.imgSrc = "/mountains/cloud1.png";
+ this.imgSrc = "../media/weather/cloud.png";
  if (weather == 'rain') {
- this.imgSrc = "/mountains/raincloud1.png";
+ this.imgSrc = "../media/weather/raincloud.png";
  }
  Cloud.clouds.push(this);
 };
@@ -510,7 +510,7 @@ Cloud.prototype.applySunset = function(ctx) {
  var canvasCloudImg = document.createElement('canvas');
  var contextCloudImg = canvasCloudImg.getContext('2d');
  var img = new Image();
- img.src = "/mountains/cloud1.png";
+ img.src = "../media/clouds/cloud.png";
  contextCloudImg.drawImage(img, 0, 0, this.width, this.height );
  var cloudData = contextCloudImg.getImageData(0, 0, this.width, this.height);
 
@@ -558,9 +558,9 @@ var Precipitation = function(type) {
  this.height = this.canvasRect.height/20;
  this.speed = 20;
  if (this.type == "rain") {
- this.imgSrc = "/mountains/raindrops1.png";
+ this.imgSrc = "../media/weather/raindrops.png";
  } else if (this.type == "snow") {
- this.imgSrc = "/mountains/snowdrops1.png";
+ this.imgSrc = "../media/weather/snowdrops.png";
  }
  Precipitation.raindrops.push(this);
 }
@@ -718,8 +718,8 @@ var Bird = function() {
 };
 
 Bird.birds = [];
-Bird.imgSrcs1 = ["/mountains/bird2.png", "/mountains/bird2.png", "/mountains/bird1.png"];
-Bird.imgSrcs2 = ["/mountains/bird2_2.png", "/mountains/bird2_2.png", "/mountains/bird1_2.png"];
+Bird.imgSrcs1 = ["../media/owls/owl2_1.png", "../media/owls/owl2_1.png", "../media/owls/owl1_1.png"];
+Bird.imgSrcs2 = ["../media/owls/owl2_2.png", "../media/owls/owl2_2.png", "../media/owls/owl1_2.png"];
 Bird.masterUrlLinks = ["https://seattle-skyline.herokuapp.com/", "http://zanreads.info/", "/index/19_edo_iso_keyboard/0-81", "http://willamettecollegian.com/main/", "/index/great_grammar_transformer/0-7", "/index/city_shapes/0-89", "/index/cat_flight/0-21", "/index/portland_bridges/0-92"];
 Bird.urlLinks = ["/index/seattle_skyline/0-78", "http://zanreads.info/", "/index/19_edo_iso_keyboard/0-81", "http://willamettecollegian.com/main/", "/index/great_grammar_transformer/0-7", "/index/city_shapes/0-89", "/index/cat_flight/0-21", "/index/portland_bridges/0-92"];
 

@@ -1,0 +1,24 @@
+{
+  "name": "ankihg-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankihg/ankihg-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ankihg/ankihg-web/issues"
+  },
+  "homepage": "https://github.com/ankihg/ankihg-web#readme",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-route": "^1.5.5"
+  }
+}
