@@ -1,10 +1,12 @@
 'use strict';
 const angular = require('angular');
 require('angular-route');
+// require('style!css!./styles/home.css');
+
 
 const app = angular.module('AnkiApp', []);
 
-require('./controller/index.js')(app);
+require('./controllers/index.js')(app);
 
 app.config(['$routeProvider', function(router) {
   router
