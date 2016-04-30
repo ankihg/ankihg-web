@@ -456,9 +456,9 @@ var Cloud = function () {
  //this.widthDiv = (Math.random()*20 + 10);
  //this.heightDiv = (Math.random()*2 + 2);
  this.speed = Math.random() * (Cloud.windspeed) + Cloud.windspeed/2;
- this.imgSrc = "/mountains/cloud1.png";
+ this.imgSrc = "./media/weather/cloud.png";
  if (weather == 'rain') {
- this.imgSrc = "/mountains/raincloud1.png";
+ this.imgSrc = "./media/weather/raincloud.png";
  }
  Cloud.clouds.push(this);
 };
@@ -510,7 +510,7 @@ Cloud.prototype.applySunset = function(ctx) {
  var canvasCloudImg = document.createElement('canvas');
  var contextCloudImg = canvasCloudImg.getContext('2d');
  var img = new Image();
- img.src = "/mountains/cloud1.png";
+ img.src = "./media/clouds/cloud.png";
  contextCloudImg.drawImage(img, 0, 0, this.width, this.height );
  var cloudData = contextCloudImg.getImageData(0, 0, this.width, this.height);
 
@@ -558,9 +558,9 @@ var Precipitation = function(type) {
  this.height = this.canvasRect.height/20;
  this.speed = 20;
  if (this.type == "rain") {
- this.imgSrc = "/mountains/raindrops1.png";
+ this.imgSrc = "./media/weather/raindrops.png";
  } else if (this.type == "snow") {
- this.imgSrc = "/mountains/snowdrops1.png";
+ this.imgSrc = "./media/weather/snowdrops.png";
  }
  Precipitation.raindrops.push(this);
 }
@@ -718,8 +718,8 @@ var Bird = function() {
 };
 
 Bird.birds = [];
-Bird.imgSrcs1 = ["/mountains/bird2.png", "/mountains/bird2.png", "/mountains/bird1.png"];
-Bird.imgSrcs2 = ["/mountains/bird2_2.png", "/mountains/bird2_2.png", "/mountains/bird1_2.png"];
+Bird.imgSrcs1 = ["./media/owls/owl2_1.png", "./media/owls/owl2_1.png", "./media/owls/owl1_1.png"];
+Bird.imgSrcs2 = ["./media/owls/owl2_2.png", "./media/owls/owl2_2.png", "./media/owls/owl1_2.png"];
 Bird.masterUrlLinks = ["https://seattle-skyline.herokuapp.com/", "http://zanreads.info/", "/index/19_edo_iso_keyboard/0-81", "http://willamettecollegian.com/main/", "/index/great_grammar_transformer/0-7", "/index/city_shapes/0-89", "/index/cat_flight/0-21", "/index/portland_bridges/0-92"];
 Bird.urlLinks = ["/index/seattle_skyline/0-78", "http://zanreads.info/", "/index/19_edo_iso_keyboard/0-81", "http://willamettecollegian.com/main/", "/index/great_grammar_transformer/0-7", "/index/city_shapes/0-89", "/index/cat_flight/0-21", "/index/portland_bridges/0-92"];
 
