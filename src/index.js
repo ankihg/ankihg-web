@@ -6,6 +6,7 @@ require('angular-route');
 const app = angular.module('AnkiApp', ['ngRoute']);
 
 require('./directives/index.js')(app);
+require('./services/index.js')(app);
 require('./controllers/index.js')(app);
 
 app.config(['$routeProvider', function(router) {
