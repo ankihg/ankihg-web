@@ -1,0 +1,115 @@
+@media (max-width:1200px) {
+  .link {
+    font-size: 90%;
+  }
+
+  #name {
+    font-size: 300%;
+  }
+
+  #desc {
+    font-size: 120%;
+  }
+
+
+}
+
+@media (max-width:1000px) {
+  .link {
+    font-size: 66%;
+  }
+
+  #name {
+    font-size: 290%;
+  }
+
+  #desc {
+    font-size: 85%;
+  }
+}
+
+@media (max-width:770px) {
+  #myCanvas {
+    display: none;
+  }
+
+  .jumbotron {
+    text-align: center;
+  }
+
+  .link {
+    font-size: 120%;
+  }
+
+  #name {
+    font-size: 400%;
+  }
+
+  #desc {
+    font-size: 180%;
+  }
+}
+
+@media (max-width:650px) {
+
+  #desc {
+    font-size: 150%;
+  }
+}
+
+@media (max-width:580px) {
+  .link {
+    font-size: 100%;
+  }
+
+  @media (max-width:550px) {
+    #name {
+      font-size: 300%;
+    }
+
+    #desc {
+      display: none;
+    }
+
+    #desc-m {
+      display: block;
+      font-size: 130%;
+    }
+
+    .link {
+      font-size: 80%;
+    }
+}
+
+@media (max-width:420px) {
+  #desc-r {
+    display: block;
+    font-size: 150%;
+  }
+
+  #desc-m {
+    display: none;
+  }
+}
+
+@media (max-width:420px) {
+  #name {
+    font-size: 250%;
+  }
+
+  .link {
+    font-size: 60%;
+  }
+
+  #contain-education h3 {
+    font-size: 120%;
+  }
+
+  #contain-technical-skills h3 {
+    font-size: 120%;
+  }
+
+  #contain-checklist {
+    font-size: 110%;
+  }
+}

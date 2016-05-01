@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>Welcome</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" type="text/css" href="../styles/base.css">
+ <link rel="stylesheet" type="text/css" href="../styles/layout.css">
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+ <!-- <script id='project-template' type='text/x-handlebars-template'>
+   <div class="row project" id="{{id}}">
+   <div class="col-sm-6">
+   <a href="{{url}}" target="_blank"><img src="{{imgSrc}}">
+   </div>
+   <div class="col-sm-6 project-txt">
+   <h2>{{name}}</h2></a>
+   <div>{{hashtags}}</div><br>
+   {{{about}}}
+   </div>
+   </div>
+   &nbsp;
+</script> -->
+
+<script id='education-template' type='text/x-handlebars-template'>
+  <strong> {{{title}}} </strong> <br>
+  {{place}} <br>
+  {{date}} <br><br>
+</script>
+
+</head>
+<body>
+
+<div class="container">
+ <div class="jumbotron">
+<div class="row">
+<div class="col-sm-6">
+ <h1 id='name'>Annika Hagelin</h1>
+ <p id="desc">Seeking full-time employment in software development</p>
+  <p id="desc-m">Seeking employment in software development</p>
+ <p id="desc-r">Software developer</p>
+
+ <!-- <a class="link" href="http://ankihg.ucoz.com/" target="_blank"><img src="../media/tree_c.png"> Personal Website</a> -->
+ <!-- <a class="link" href="http://ankihg.ucoz.com/resume_online.pdf" target="_blank"><img src="../media/mtn.png"> Resume</a> -->
+ <a class="link" href="/projects"><img src="../media/tree_c.png"> Projects</a>
+ <a class="link" href="/about"><img src="../media/mtn.png"> About me</a>
+ <a class="link" href="https://github.com/ankihg/" target="_blank"><img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"> GitHub</a>
+ <a class="link" href="https://www.linkedin.com/in/annika-hagelin-a8b949ab" target="_blank"><img src="http://uxrepo.com/static/icon-sets/brandico/svg/linkedin-rect.svg"> LinkedIn</a>
+
+</div>
+<div class="col-sm-6">
+  <a href="/">
+<canvas id="myCanvas" width="200" height="100" onClick="Tree.loadTrees()"> <!style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+<!-- <script src="/scripts/treeCanvas.js"></script> -->
+</a>
+
+</div>
+
+</div>
+ </div>
+
+ <!-- <div>
+         <select id="tag-filter">
+           <option value="">-- Filter by tag --</option>
+         </select>
+   </div> -->
+
+<main>
+
+<div class='row'>
+<div id='contain-education' class="col-sm-4">
+  <h3><img src="../media/tree_c.png"> education <img src="../media/tree_c.png"></h3>
+</div>
+
+<div id='contain-technical-skills' class="col-sm-7">
+  <h3><img src="../media/mtn.png"><img src="../media/tree_c.png"> technical skills <img src="../media/mtn.png"><img src="../media/tree_c.png"></h3>
+  <ul>
+  <li type="square">experience with web development using HTML/CSS, JavaScript, and jQuery</li>
+  <li type="square">proficiency with Java, Python, C++, MATLAB, R, and Haskell</li>
+  <li type="square">strong background in data structures and algorithms</li>
+  <li type="square">accomplished with iOS development in Objective-C</li>
+  <li type="square">experience with 3D graphics using OpenGL</li>
+</ul>
+</div>
+
+
+</div>
+
+<div class='contain-checklist'>
+   <h3><img src="../media/tree_c.png">&nbsp;&nbsp;&nbsp;<img src="../media/mtn.png"><img src="../media/tree_c.png">&nbsp; select projects by skills <img src="../media/tree_c.png">&nbsp;&nbsp;&nbsp;<img src="../media/mtn.png">&nbsp;&nbsp;<img src="../media/mtn.png"> </h3>
+   <ul id='tag-checklist'>
+     <!-- <div class="col-sm-6"><li><label for="chk1"><input type="checkbox" name="chk1" value="all" id="all"> All</label></li></div> -->
+   </ul>
+ </div>
+
+<br>
+
+<section id='projects-holder'>
+  plz
+  <div data-ng-repeat="project in profCtrl.projects">
+    <project project={project} />
+  </div>
+</section>
+
+
+<section class='row' id="about">
+  <h1><img src="../media/tree_c.png"><img src="../media/tree_c.png"><img src="../media/tree_c.png"><img src="../media/tree_c.png"> &nbsp; ABOUT ME &nbsp; <img src="../media/mtn.png"><img src="../media/mtn.png"><img src="../media/mtn.png"><img src="../media/mtn.png"></h1>
+  <br>
+  <p>welcome. my name is annika. i come from the san francisco east bay and now i live in seattle. i like to program, study language, and play music. please enjoy my website.  </p>
+</section>
+
+<span class="treeLine">
+<img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png">
+</span>
+<span id='farewell'>
+<a href='http://ankihg.ucoz.com'>Thank you for visiting</a>
+</span>
+
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+<!-- <script src="vendor/page.js"></script> -->
+
+<!-- <script src="scripts/indexController.js"></script>
+
+<script src="scripts/project.js"></script>
+<script src="scripts/projectView.js"></script>
+<script src="scripts/projectController.js"></script>
+
+<script src="scripts/education.js"></script>
+
+<script src="scripts/aboutController.js"></script>
+
+<script src="scripts/routes.js"></script> -->
+
+<!-- <script>
+  Education.fetchAll();
+</script> -->
+
+</body>
+</html>
