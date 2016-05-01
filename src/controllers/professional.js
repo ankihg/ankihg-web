@@ -23,6 +23,22 @@ module.exports = function(app) {
       }
     ];
 
+    vm.education = [
+      {
+        title:   "code 301: intermediate software development",
+        place: "code fellows, seattle, wa",
+        url: "<a href='https://www.codefellows.org/courses/code-301/intermediate-software-development",
+        date: "january 2016"
+      },
+      {
+        title:   "bachelor's degree in computer science",
+        place: "willamette university, salem, or",
+        url: "http://www.willamette.edu/cla/cs/",
+        date: "2011 - 2015"
+      }
+
+    ];
+
     /*<script src="vendor/page.js"></script>
 
     <script src="scripts/indexController.js"></script>

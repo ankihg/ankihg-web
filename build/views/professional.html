@@ -24,11 +24,11 @@
    &nbsp;
 </script> -->
 
-<script id='education-template' type='text/x-handlebars-template'>
+<!-- <script id='education-template' type='text/x-handlebars-template'>
   <strong> {{{title}}} </strong> <br>
   {{place}} <br>
   {{date}} <br><br>
-</script>
+</script> -->
 
 </head>
 <body>
@@ -74,6 +74,9 @@ Your browser does not support the HTML5 canvas tag.
 <div class='row'>
 <div id='contain-education' class="col-sm-4">
   <h3><img src="../media/tree_c.png"> education <img src="../media/tree_c.png"></h3>
+  <div data-ng-repeat="education in profCtrl.education">
+    <education education={education} />
+  </div>
 </div>
 
 <div id='contain-technical-skills' class="col-sm-7">
@@ -100,17 +103,9 @@ Your browser does not support the HTML5 canvas tag.
 <br>
 
 <section id='projects-holder'>
-  plz
   <div data-ng-repeat="project in profCtrl.projects">
     <project project={project} />
   </div>
-</section>
-
-
-<section class='row' id="about">
-  <h1><img src="../media/tree_c.png"><img src="../media/tree_c.png"><img src="../media/tree_c.png"><img src="../media/tree_c.png"> &nbsp; ABOUT ME &nbsp; <img src="../media/mtn.png"><img src="../media/mtn.png"><img src="../media/mtn.png"><img src="../media/mtn.png"></h1>
-  <br>
-  <p>welcome. my name is annika. i come from the san francisco east bay and now i live in seattle. i like to program, study language, and play music. please enjoy my website.  </p>
 </section>
 
 <span class="treeLine">

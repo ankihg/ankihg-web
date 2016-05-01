@@ -52,7 +52,7 @@
 	const app = angular.module('AnkiApp', ['ngRoute']);
 
 	__webpack_require__(5)(app);
-	__webpack_require__(7)(app);
+	__webpack_require__(8)(app);
 
 	app.config(['$routeProvider', function(router) {
 	  router
@@ -31996,6 +31996,7 @@
 
 	module.exports = function(app) {
 	  __webpack_require__(6)(app);
+	  __webpack_require__(7)(app);
 	}
 
 
@@ -32016,17 +32017,32 @@
 
 /***/ },
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	module.exports = function(app) {
-	  __webpack_require__(8)(app);
-	  __webpack_require__(9)(app);
-
+	  app.directive('education', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/education.html'
+	    }
+	  });
 	}
 
 
 /***/ },
 /* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(app) {
+	  __webpack_require__(9)(app);
+	  __webpack_require__(10)(app);
+
+	}
+
+
+/***/ },
+/* 9 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -32860,7 +32876,7 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -32886,6 +32902,22 @@
 	        tags: ["HTML", "CSS", "JavaScript", "website management"],
 	        about: "<p>My client Zan requested a spooky website to display book reviews.</p> &nbsp; &nbsp; &nbsp; &nbsp; Midnight moon illuminates literary alarm <br>&nbsp; &nbsp; &nbsp; &nbsp; Fiction is found in the forest <br> &nbsp; &nbsp; &nbsp; &nbsp; Ghosts grab ominous novels <br>&nbsp; &nbsp; &nbsp; &nbsp; Eerie reads for a cyberchill to the bone<br>"
 	      }
+	    ];
+
+	    vm.education = [
+	      {
+	        title:   "code 301: intermediate software development",
+	        place: "code fellows, seattle, wa",
+	        url: "<a href='https://www.codefellows.org/courses/code-301/intermediate-software-development",
+	        date: "january 2016"
+	      },
+	      {
+	        title:   "bachelor's degree in computer science",
+	        place: "willamette university, salem, or",
+	        url: "http://www.willamette.edu/cla/cs/",
+	        date: "2011 - 2015"
+	      }
+
 	    ];
 
 	    /*<script src="vendor/page.js"></script>
