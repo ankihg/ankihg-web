@@ -139,7 +139,7 @@ module.exports = function(app) {
 
     };
 
-    function enterMouse(id) {
+    var  enterMouse = vm.enterMouse = function(id) {
      var r = Math.random()*3;
      if (r < 1) {
      var img = '<img src="../media/flags/flag_red.gif">';
@@ -151,7 +151,7 @@ module.exports = function(app) {
      document.getElementById(id).innerHTML = img;
     }
 
-    function exitMouse(id) {
+    var exitMouse = vm.exitMouse = function(id) {
      document.getElementById(id).innerHTML = '';
     }
 
@@ -224,7 +224,7 @@ module.exports = function(app) {
     }
 
     //Fish class
-    var Fish = function(x, y) {
+    var Fish = vm.Fish = function(x, y) {
      var riverCanvas = document.getElementById('riverCanvas');
      var rect = riverCanvas.getBoundingClientRect();
      this.x = (Math.random()*(rect.width/3))+(rect.width/5);
@@ -306,7 +306,7 @@ module.exports = function(app) {
      ctx.putImageData(img, this.x, this.y);
     };
 
-    function fishJump() {
+    var fishJump = vm.fishJump = function() {
     var x = (Math.random()*100)+40;
     var y = (Math.random()*100);
      new Fish(x, y);
@@ -439,7 +439,7 @@ module.exports = function(app) {
 
 
     //Cloud class
-    var Cloud = function () {
+    var Cloud = vm.Cloud = function () {
      this.canvas = document.getElementById('cloudCanvas');
      this.canvas.style.zIndex = "2";
      this.context;
@@ -534,14 +534,14 @@ module.exports = function(app) {
     }
 
 
-    function addCloud() {
+    var addCloud = vm.addCloud = function() {
      new Cloud();
      //setInterval(function(){Cloud.drawClouds()},1000);
      //cloud.draw();
     }
 
     //Precipitation class
-    var Precipitation = function(type) {
+    var Precipitation = vm.Precipitation = function(type) {
      var rainCanvas = document.getElementById('rainCanvas');
      this.canvas = rainCanvas;
      this.canvasRect = this.canvas.getBoundingClientRect();
@@ -684,7 +684,7 @@ module.exports = function(app) {
 
 
     //Bird class
-    var Bird = function() {
+    var Bird = vm.Bird = function() {
      this.canvas;
      this.context;
      this.parentDiv;
