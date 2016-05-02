@@ -2,12 +2,21 @@ module.exports = function(app) {
 
   console.log('in home.js');
 
-  app.controller('HomeController', ['$window', function($window) {
+  app.controller('HomeController', ['$window', '$scope', '$interval', function($window, $scope, $interval) {
 
     console.log('home controller created');
     var vm = this;
+    var intervals = [];
 
     $window.alert("10/10 users say best experienced with full screen");
+
+    $scope.$on('$locationChangeStart', function(e) {
+      console.log('are you leaving?');
+      intervals.forEach(function(interval) {
+        if (angular.isDefined(interval)) $interval.cancel(interval);
+      });
+      intervals = [];
+    });
 
     var weather;
     var daytime;
@@ -16,14 +25,24 @@ module.exports = function(app) {
      getWeather();
      //adjustToTime();
 
-     setInterval(function(){Cloud.drawClouds()},1000);
-     setInterval(function(){loadTree()},5);
-     setInterval(function(){Fish.drawFishes()},200);
+
+     intervals.push($interval(function(){Cloud.drawClouds()},1000));
+     intervals.push($interval(function(){loadTree()},5));
+     intervals.push($interval(function(){Fish.drawFishes()},200));
      if (weather == "rain" || weather=="snow") {
-     setInterval(function(){Precipitation.drop()},200);
+       intervals.push($interval(function(){Precipitation.drop()},200));
      }
-     setInterval(function(){updateTitle()},1000);
-     setInterval(function(){Bird.handleBirds()},1000);
+     intervals.push($interval(function(){updateTitle()},1000));
+     intervals.push($interval(function(){Bird.handleBirds()},1000));
+
+    //  setInterval(function(){Cloud.drawClouds()},1000);
+    //  setInterval(function(){loadTree()},5);
+    //  setInterval(function(){Fish.drawFishes()},200);
+    //  if (weather == "rain" || weather=="snow") {
+    //  setInterval(function(){Precipitation.drop()},200);
+    //  }
+    //  setInterval(function(){updateTitle()},1000);
+    //  setInterval(function(){Bird.handleBirds()},1000);
     }
 
     function getWeather() {
@@ -723,7 +742,8 @@ module.exports = function(app) {
      //alert('create bird');
      var r = Math.random()*20; //25
      if (r < 1) {
-     new Bird();
+       console.log('make bird');
+       new Bird();
      }
 
      for (var i=0; i<Bird.birds.length; i++) {
@@ -738,20 +758,21 @@ module.exports = function(app) {
     Bird.prototype.create = function() {
      this.canvas = document.createElement('canvas');
 
+     console.log(document.getElementById('canvasWrap'));
      this.parentDiv = document.getElementById('canvasWrap');
      this.parentRect = this.parentDiv.getBoundingClientRect();
 
      this.canvas.style.position = "absolute";
      this.canvas.style.zIndex = "1";
 
-     this.canvas.style.left = 5*this.parentRect.width/6;
-     this.canvas.style.top = 5*this.parentRect.height/6;
+     this.canvas.style.left = 5*this.parentRect.width/6+"px";
+     this.canvas.style.top = 5*this.parentRect.height/6+"px";
 
      var dif = Math.random();
-     this.canvas.style.width = this.parentRect.width/5 - dif*(this.parentRect.width/15);
-     this.canvas.style.height = this.parentRect.height/5 - dif*(this.parentRect.height/15);
-     this.canvas.style.width = parseInt(this.canvas.style.width) + parseInt(this.canvas.style.top)/this.parentRect.height;
-     this.canvas.style.height = parseInt(this.canvas.style.height) + parseInt(this.canvas.style.top)/this.parentRect.height;
+     this.canvas.style.width = this.parentRect.width/20 - dif*(this.parentRect.width/15);
+     this.canvas.style.height = this.parentRect.height/20 - dif*(this.parentRect.height/15);
+     this.canvas.style.width = (parseInt(this.canvas.style.width) + parseInt(this.canvas.style.top)/this.parentRect.height)+"px";
+     this.canvas.style.height = (parseInt(this.canvas.style.height) + parseInt(this.canvas.style.top)/this.parentRect.height)+"px";
 
      //this.canvas.style.border= "1px dashed yellow";
 
@@ -773,11 +794,12 @@ module.exports = function(app) {
     };
 
     Bird.prototype.draw = function() {
+      console.log('draw bird');
      this.context = this.canvas.getContext("2d");
 
      this.rect = this.canvas.getBoundingClientRect();
-     this.width = this.rect.width;
-     this.height = this.rect.height;
+     this.width = this.rect.width/2;
+     this.height = this.rect.height/2;
 
      var bird = this;
      var img = new Image();
@@ -794,12 +816,12 @@ module.exports = function(app) {
     Bird.prototype.fly = function() {
      //this.parentDiv.removeChild(this.canvas);
 
-     this.canvas.style.left = parseInt(this.canvas.style.left) + this.xVel * this.parentRect.width/100;
-     this.canvas.style.top = parseInt(this.canvas.style.top) + this.yVel * this.parentRect.height/100;
+     this.canvas.style.left = (parseInt(this.canvas.style.left) + this.xVel * this.parentRect.width/100)+"px";
+     this.canvas.style.top = (parseInt(this.canvas.style.top) + this.yVel * this.parentRect.height/100)+"px";
 
     // alert(this.canvas.style.width);
-     this.canvas.style.width = parseInt(this.canvas.style.width) + parseInt(this.canvas.style.top)/this.parentRect.height;
-     this.canvas.style.height = parseInt(this.canvas.style.height) + parseInt(this.canvas.style.top)/this.parentRect.height;
+     this.canvas.style.width = (parseInt(this.canvas.style.width) + parseInt(this.canvas.style.top)/this.parentRect.height)+"px";
+     this.canvas.style.height = (parseInt(this.canvas.style.height) + parseInt(this.canvas.style.top)/this.parentRect.height)+"px";
     // alert(this.canvas.style.width);
 
 
