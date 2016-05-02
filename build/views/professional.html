@@ -10,26 +10,6 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
- <!-- <script id='project-template' type='text/x-handlebars-template'>
-   <div class="row project" id="{{id}}">
-   <div class="col-sm-6">
-   <a href="{{url}}" target="_blank"><img src="{{imgSrc}}">
-   </div>
-   <div class="col-sm-6 project-txt">
-   <h2>{{name}}</h2></a>
-   <div>{{hashtags}}</div><br>
-   {{{about}}}
-   </div>
-   </div>
-   &nbsp;
-</script> -->
-
-<!-- <script id='education-template' type='text/x-handlebars-template'>
-  <strong> {{{title}}} </strong> <br>
-  {{place}} <br>
-  {{date}} <br><br>
-</script> -->
-
 </head>
 <body>
 <section data-ng-init="profCtrl.getProjects()">
@@ -44,6 +24,7 @@
 
  <!-- <a class="link" href="http://ankihg.ucoz.com/" target="_blank"><img src="../media/tree_c.png"> Personal Website</a> -->
  <!-- <a class="link" href="http://ankihg.ucoz.com/resume_online.pdf" target="_blank"><img src="../media/mtn.png"> Resume</a> -->
+ <a class="link" data-ng-click="profCtrl.toHome()"><img src="../media/tree_c.png"> home</a>
  <a class="link" href="/projects"><img src="../media/tree_c.png"> Projects</a>
  <a class="link" href="/about"><img src="../media/mtn.png"> About me</a>
  <a class="link" href="https://github.com/ankihg/" target="_blank"><img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"> GitHub</a>

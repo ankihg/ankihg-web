@@ -53,7 +53,7 @@
 
 	__webpack_require__(5)(app);
 	__webpack_require__(8)(app);
-	__webpack_require__(12)(app);
+	__webpack_require__(13)(app);
 
 	app.config(['$routeProvider', function(router) {
 	  router
@@ -32036,9 +32036,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
-
 	  __webpack_require__(9)(app);
-
+	  __webpack_require__(12)(app);
 	}
 
 
@@ -32204,27 +32203,50 @@
 
 /***/ },
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	module.exports = function(app) {
-	  __webpack_require__(13)(app);
-	  __webpack_require__(14)(app);
+	  app.factory('NavService', ['$location', function($location) {
 
+	    this.toProfessional = function() {
+	      $location.path('/professional');
+	    }
+
+	    this.toHome = function() {
+	      $location.path('/home');
+	    };
+
+	    return this;
+	  }]);
 	}
 
 
 /***/ },
 /* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(app) {
+	  __webpack_require__(14)(app);
+	  __webpack_require__(15)(app);
+
+	}
+
+
+/***/ },
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
 
 	  console.log('in home.js');
 
-	  app.controller('HomeController', ['$window', '$scope', '$interval', function($window, $scope, $interval) {
+	  app.controller('HomeController', ['$window', '$scope', '$interval', 'NavService', function($window, $scope, $interval, NavService) {
 
-	    console.log('home controller created');
 	    var vm = this;
+	    vm.toProfessional = function() {
+	      return NavService.toProfessional();
+	    };
+
 	    var intervals = [];
 
 	    $window.alert("10/10 users say best experienced with full screen");
@@ -33070,12 +33092,12 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
 
-	  app.controller('ProfessionalController', ['$scope', 'ProjectService', function($scope, ProjectService) {
+	  app.controller('ProfessionalController', ['$scope', 'ProjectService', 'NavService', function($scope, ProjectService, NavService) {
 
 	    var vm = this;
 	    vm.tags = null;
@@ -33128,31 +33150,10 @@
 	      }
 	    ];
 
+	    vm.toHome = function() {
+	      return NavService.toHome();
+	    }
 
-	    /*<script src="vendor/page.js"></script>
-
-	    <script src="scripts/indexController.js"></script>
-
-	    <script src="scripts/project.js"></script>
-	    <script src="scripts/projectView.js"></script>
-	    <script src="scripts/projectController.js"></script>
-
-	    <script src="scripts/education.js"></script>
-
-	    <script src="scripts/aboutController.js"></script>
-
-	    <script src="scripts/routes.js"></script>*/
-
-	    // require('./professional-scripts/aboutController.js')($scope);
-	    // require('./professional-scripts/education.js')($scope);
-	    // require('./professional-scripts/indexController.js')($scope);
-	    // require('./professional-scripts/project.js')($scope);
-	    // require('./professional-scripts/projectController.js')($scope);
-	    // require('./professional-scripts/projectView.js')($scope);
-	    // require('./professional-scripts/routes.js')($scope);
-	    // require('./professional-scripts/treeCanvas.js')($scope);
-
-	    console.log('professional controller created');
 	    return vm;
 	  }])
 

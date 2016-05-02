@@ -1,6 +1,6 @@
 module.exports = function(app) {
 
-  app.controller('ProfessionalController', ['$scope', 'ProjectService', function($scope, ProjectService) {
+  app.controller('ProfessionalController', ['$scope', 'ProjectService', 'NavService', function($scope, ProjectService, NavService) {
 
     var vm = this;
     vm.tags = null;
@@ -53,31 +53,10 @@ module.exports = function(app) {
       }
     ];
 
+    vm.toHome = function() {
+      return NavService.toHome();
+    }
 
-    /*<script src="vendor/page.js"></script>
-
-    <script src="scripts/indexController.js"></script>
-
-    <script src="scripts/project.js"></script>
-    <script src="scripts/projectView.js"></script>
-    <script src="scripts/projectController.js"></script>
-
-    <script src="scripts/education.js"></script>
-
-    <script src="scripts/aboutController.js"></script>
-
-    <script src="scripts/routes.js"></script>*/
-
-    // require('./professional-scripts/aboutController.js')($scope);
-    // require('./professional-scripts/education.js')($scope);
-    // require('./professional-scripts/indexController.js')($scope);
-    // require('./professional-scripts/project.js')($scope);
-    // require('./professional-scripts/projectController.js')($scope);
-    // require('./professional-scripts/projectView.js')($scope);
-    // require('./professional-scripts/routes.js')($scope);
-    // require('./professional-scripts/treeCanvas.js')($scope);
-
-    console.log('professional controller created');
     return vm;
   }])
 

@@ -2,10 +2,13 @@ module.exports = function(app) {
 
   console.log('in home.js');
 
-  app.controller('HomeController', ['$window', '$scope', '$interval', function($window, $scope, $interval) {
+  app.controller('HomeController', ['$window', '$scope', '$interval', 'NavService', function($window, $scope, $interval, NavService) {
 
-    console.log('home controller created');
     var vm = this;
+    vm.toProfessional = function() {
+      return NavService.toProfessional();
+    };
+
     var intervals = [];
 
     $window.alert("10/10 users say best experienced with full screen");
