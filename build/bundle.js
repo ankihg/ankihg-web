@@ -53,7 +53,7 @@
 
 	__webpack_require__(5)(app);
 	__webpack_require__(8)(app);
-	__webpack_require__(10)(app);
+	__webpack_require__(12)(app);
 
 	app.config(['$routeProvider', function(router) {
 	  router
@@ -32044,11 +32044,11 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
 
-	  app.factory('ProjectService', [function() {
+	  app.factory('ProjectService', ['$http', function($http) {
 
 	    var projects = [
 	      {
@@ -32069,10 +32069,20 @@
 	      }
 	    ];
 
+	    var path = __webpack_require__(10).serverUrl+'/projects';
 	    var tags = null;
 
-	    this.getProjects = function() {
-	      return projects;
+	    this.getProjects = function(next) {
+	      // if (projects) return projects;
+	      $http.get(path)
+	        .then(res => {
+	          console.log(res.data);
+	          projects = res.data.data;
+	          if (next) next(projects);
+	        })
+	        .catch(err => {
+	          console.log(err);
+	        })
 	    }
 
 	    this.getTags = function() {
@@ -32103,15 +32113,125 @@
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(process) {exports.DB_PORT = process.env.MY_DB_URI || 'mongodb://localhost/db';
+	exports.serverPort = 3000;
+	exports.clientServerPort = 8080;
+
+	exports.serverUrl = 'http://localhost:'+exports.serverPort;
+	exports.clientServerUrl = 'http://localhost:'+exports.clientServerPort;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	// shim for using process in browser
+
+	var process = module.exports = {};
+	var queue = [];
+	var draining = false;
+	var currentQueue;
+	var queueIndex = -1;
+
+	function cleanUpNextTick() {
+	    draining = false;
+	    if (currentQueue.length) {
+	        queue = currentQueue.concat(queue);
+	    } else {
+	        queueIndex = -1;
+	    }
+	    if (queue.length) {
+	        drainQueue();
+	    }
+	}
+
+	function drainQueue() {
+	    if (draining) {
+	        return;
+	    }
+	    var timeout = setTimeout(cleanUpNextTick);
+	    draining = true;
+
+	    var len = queue.length;
+	    while(len) {
+	        currentQueue = queue;
+	        queue = [];
+	        while (++queueIndex < len) {
+	            if (currentQueue) {
+	                currentQueue[queueIndex].run();
+	            }
+	        }
+	        queueIndex = -1;
+	        len = queue.length;
+	    }
+	    currentQueue = null;
+	    draining = false;
+	    clearTimeout(timeout);
+	}
+
+	process.nextTick = function (fun) {
+	    var args = new Array(arguments.length - 1);
+	    if (arguments.length > 1) {
+	        for (var i = 1; i < arguments.length; i++) {
+	            args[i - 1] = arguments[i];
+	        }
+	    }
+	    queue.push(new Item(fun, args));
+	    if (queue.length === 1 && !draining) {
+	        setTimeout(drainQueue, 0);
+	    }
+	};
+
+	// v8 likes predictible objects
+	function Item(fun, array) {
+	    this.fun = fun;
+	    this.array = array;
+	}
+	Item.prototype.run = function () {
+	    this.fun.apply(null, this.array);
+	};
+	process.title = 'browser';
+	process.browser = true;
+	process.env = {};
+	process.argv = [];
+	process.version = ''; // empty string to avoid regexp issues
+	process.versions = {};
+
+	function noop() {}
+
+	process.on = noop;
+	process.addListener = noop;
+	process.once = noop;
+	process.off = noop;
+	process.removeListener = noop;
+	process.removeAllListeners = noop;
+	process.emit = noop;
+
+	process.binding = function (name) {
+	    throw new Error('process.binding is not supported');
+	};
+
+	process.cwd = function () { return '/' };
+	process.chdir = function (dir) {
+	    throw new Error('process.chdir is not supported');
+	};
+	process.umask = function() { return 0; };
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
 	module.exports = function(app) {
-	  __webpack_require__(11)(app);
-	  __webpack_require__(12)(app);
+	  __webpack_require__(13)(app);
+	  __webpack_require__(14)(app);
 
 	}
 
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -32945,7 +33065,7 @@
 
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -32958,17 +33078,19 @@
 	    });
 
 	    vm.setProjectsByTags = function() {
-	      vm.projects = ProjectService.getProjects().filter(function(project) {
-	        return project.tags.filter(function(pTag) {
-	          return vm.tags.filter(function(sTag) { return sTag.display })
-	          .map(function(sTag) { return sTag.tag })
-	          .indexOf(pTag) >= 0;
-	        }).length > 0;
-	      });
-	      return vm.projects = (vm.projects.length) ? vm.projects : ProjectService.getProjects();
+	      ProjectService.getProjects(function(projects) {
+	        projects.filter(function(project) {
+	          return project.tags.filter(function(pTag) {
+	            return vm.tags.filter(function(sTag) { return sTag.display })
+	            .map(function(sTag) { return sTag.tag })
+	            .indexOf(pTag) >= 0;
+	          }).length > 0;
+	        });
+	        return vm.projects = (projects.length) ? projects : ProjectService.getProjects();
+	      })
 	    }
 
-	    vm.projects = vm.setProjectsByTags();
+	   vm.setProjectsByTags();
 
 
 	    // console.log(project.tags.filter(function(pTag) {

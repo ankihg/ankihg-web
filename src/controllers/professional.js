@@ -8,17 +8,19 @@ module.exports = function(app) {
     });
 
     vm.setProjectsByTags = function() {
-      vm.projects = ProjectService.getProjects().filter(function(project) {
-        return project.tags.filter(function(pTag) {
-          return vm.tags.filter(function(sTag) { return sTag.display })
-          .map(function(sTag) { return sTag.tag })
-          .indexOf(pTag) >= 0;
-        }).length > 0;
-      });
-      return vm.projects = (vm.projects.length) ? vm.projects : ProjectService.getProjects();
+      ProjectService.getProjects(function(projects) {
+        projects.filter(function(project) {
+          return project.tags.filter(function(pTag) {
+            return vm.tags.filter(function(sTag) { return sTag.display })
+            .map(function(sTag) { return sTag.tag })
+            .indexOf(pTag) >= 0;
+          }).length > 0;
+        });
+        return vm.projects = (projects.length) ? projects : ProjectService.getProjects();
+      })
     }
 
-    vm.projects = vm.setProjectsByTags();
+   vm.setProjectsByTags();
 
 
     // console.log(project.tags.filter(function(pTag) {

@@ -1,6 +1,6 @@
 module.exports = function(app) {
 
-  app.factory('ProjectService', [function() {
+  app.factory('ProjectService', ['$http', function($http) {
 
     var projects = [
       {
@@ -21,10 +21,20 @@ module.exports = function(app) {
       }
     ];
 
+    var path = require('../../config').serverUrl+'/projects';
     var tags = null;
 
-    this.getProjects = function() {
-      return projects;
+    this.getProjects = function(next) {
+      // if (projects) return projects;
+      $http.get(path)
+        .then(res => {
+          console.log(res.data);
+          projects = res.data.data;
+          if (next) next(projects);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
 
     this.getTags = function() {
