@@ -3,24 +3,33 @@ module.exports = function(app) {
   app.controller('ProfessionalController', ['$scope', 'ProjectService', function($scope, ProjectService) {
 
     var vm = this;
-    vm.tags = ProjectService.getTags().map(function(tag) {
-      return {tag: tag, display: false}
-    });
+    vm.tags = null;
+    vm.allProjects = null;
+    vm.dipslayedProjects = null;
 
-    vm.setProjectsByTags = function() {
+    vm.getProjects = function() {
       ProjectService.getProjects(function(projects) {
-        projects.filter(function(project) {
-          return project.tags.filter(function(pTag) {
-            return vm.tags.filter(function(sTag) { return sTag.display })
-            .map(function(sTag) { return sTag.tag })
-            .indexOf(pTag) >= 0;
-          }).length > 0;
+        console.log('get projects');
+        vm.allProjects = projects;
+        vm.tags = ProjectService.getTags().map(function(tag) {
+          return {tag: tag, display: false}
         });
-        return vm.projects = (projects.length) ? projects : ProjectService.getProjects();
-      })
+        vm.setProjectsByTags(projects);
+      });
     }
 
-   vm.setProjectsByTags();
+    vm.setProjectsByTags = function(projects) {
+      projects = projects || vm.allProjects;
+      vm.displayedProjects = projects.filter(function(project) {
+        return project.tags.filter(function(pTag) {
+          return vm.tags.filter(function(sTag) { return sTag.display })
+          .map(function(sTag) { return sTag.tag })
+          .indexOf(pTag) >= 0;
+        }).length > 0;
+      });
+      return vm.displayedProjects = (vm.displayedProjects.length) ? vm.displayedProjects : vm.allProjects;
+    }
+
 
 
     // console.log(project.tags.filter(function(pTag) {

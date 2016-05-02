@@ -32,7 +32,7 @@
 
 </head>
 <body>
-
+<section data-ng-init="profCtrl.getProjects()">
 <div class="container">
  <div class="jumbotron">
 <div class="row">
@@ -107,7 +107,7 @@ Your browser does not support the HTML5 canvas tag.
 <br>
 
 <section id='projects-holder'>
-  <div data-ng-repeat="project in profCtrl.projects">
+  <div data-ng-repeat="project in profCtrl.displayedProjects">
     <project project={project} />
   </div>
 </section>
@@ -120,6 +120,8 @@ Your browser does not support the HTML5 canvas tag.
 </span>
 
 </main>
+
+</section>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
@@ -140,6 +142,8 @@ Your browser does not support the HTML5 canvas tag.
 <!-- <script>
   Education.fetchAll();
 </script> -->
+
+
 
 </body>
 </html>

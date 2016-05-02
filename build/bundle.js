@@ -32050,34 +32050,17 @@
 
 	  app.factory('ProjectService', ['$http', function($http) {
 
-	    var projects = [
-	      {
-	        name: "PORTLAND BRIDGES",
-	        url: "http://ankihg.ucoz.com/index/portland_bridges/0-92",
-	        imgSrc: "http://ankihg.ucoz.com/pdx_br/portland_bridges.png",
-	        date:"2015-12-10",
-	        tags: ["HTML", "CSS", "JavaScript", "Google Maps API"],
-	        about: "<h4>Like an interstate, </h4><p> &nbsp &nbsp the Willamette River tears the metropolis.</p><h4 style='text-align:center'> Cross me to connect.</h4><h3>Explore bridges and other crossings </h3><h4 style='text-align:right'> in the U.S. state of Oregon.</h4>"
-	      },
-	      {
-	        name: "ZANREADS . INFO",
-	        url: "http://www.zanreads.info/",
-	        imgSrc: "http://ankihg.ucoz.com/zanreads/zanreads2.png",
-	        date:"2015-10-31",
-	        tags: ["HTML", "CSS", "JavaScript", "website management"],
-	        about: "<p>My client Zan requested a spooky website to display book reviews.</p> &nbsp; &nbsp; &nbsp; &nbsp; Midnight moon illuminates literary alarm <br>&nbsp; &nbsp; &nbsp; &nbsp; Fiction is found in the forest <br> &nbsp; &nbsp; &nbsp; &nbsp; Ghosts grab ominous novels <br>&nbsp; &nbsp; &nbsp; &nbsp; Eerie reads for a cyberchill to the bone<br>"
-	      }
-	    ];
-
 	    var path = __webpack_require__(10).serverUrl+'/projects';
+	    var projects = null;
 	    var tags = null;
 
 	    this.getProjects = function(next) {
-	      // if (projects) return projects;
+	      if (projects) return (next) ? next(projects) : projects;
 	      $http.get(path)
 	        .then(res => {
 	          console.log(res.data);
 	          projects = res.data.data;
+	          calcTags();
 	          if (next) next(projects);
 	        })
 	        .catch(err => {
@@ -33073,24 +33056,33 @@
 	  app.controller('ProfessionalController', ['$scope', 'ProjectService', function($scope, ProjectService) {
 
 	    var vm = this;
-	    vm.tags = ProjectService.getTags().map(function(tag) {
-	      return {tag: tag, display: false}
-	    });
+	    vm.tags = null;
+	    vm.allProjects = null;
+	    vm.dipslayedProjects = null;
 
-	    vm.setProjectsByTags = function() {
+	    vm.getProjects = function() {
 	      ProjectService.getProjects(function(projects) {
-	        projects.filter(function(project) {
-	          return project.tags.filter(function(pTag) {
-	            return vm.tags.filter(function(sTag) { return sTag.display })
-	            .map(function(sTag) { return sTag.tag })
-	            .indexOf(pTag) >= 0;
-	          }).length > 0;
+	        console.log('get projects');
+	        vm.allProjects = projects;
+	        vm.tags = ProjectService.getTags().map(function(tag) {
+	          return {tag: tag, display: false}
 	        });
-	        return vm.projects = (projects.length) ? projects : ProjectService.getProjects();
-	      })
+	        vm.setProjectsByTags(projects);
+	      });
 	    }
 
-	   vm.setProjectsByTags();
+	    vm.setProjectsByTags = function(projects) {
+	      projects = projects || vm.allProjects;
+	      vm.displayedProjects = projects.filter(function(project) {
+	        return project.tags.filter(function(pTag) {
+	          return vm.tags.filter(function(sTag) { return sTag.display })
+	          .map(function(sTag) { return sTag.tag })
+	          .indexOf(pTag) >= 0;
+	        }).length > 0;
+	      });
+	      return vm.displayedProjects = (vm.displayedProjects.length) ? vm.displayedProjects : vm.allProjects;
+	    }
+
 
 
 	    // console.log(project.tags.filter(function(pTag) {
