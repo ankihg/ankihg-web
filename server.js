@@ -14,6 +14,7 @@ app.use((req, res, next) => {
   next();
 })
 
+require('./routes')(router, models);
 
 app.use(router);
 
