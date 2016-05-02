@@ -21,8 +21,27 @@ module.exports = function(app) {
       }
     ];
 
+    var tags = null;
+
     this.getProjects = function() {
       return projects;
+    }
+
+    this.getTags = function() {
+      return tags || calcTags();
+    }
+
+    var calcTags = function() {
+      return tags = projects.map(function(p) {
+        return p.tags;
+      }).reduce(function(uniqueTags, projectTags) {
+        projectTags.filter(function(tag) {
+          return uniqueTags.indexOf(tag) < 0;
+        }).forEach(function (tag) {
+          uniqueTags.push(tag);
+        });
+        return uniqueTags;
+      }, []);
     }
 
     return this;

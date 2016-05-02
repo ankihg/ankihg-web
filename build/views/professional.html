@@ -96,7 +96,11 @@ Your browser does not support the HTML5 canvas tag.
 <div class='contain-checklist'>
    <h3><img src="../media/tree_c.png">&nbsp;&nbsp;&nbsp;<img src="../media/mtn.png"><img src="../media/tree_c.png">&nbsp; select projects by skills <img src="../media/tree_c.png">&nbsp;&nbsp;&nbsp;<img src="../media/mtn.png">&nbsp;&nbsp;<img src="../media/mtn.png"> </h3>
    <ul id='tag-checklist'>
-     <!-- <div class="col-sm-6"><li><label for="chk1"><input type="checkbox" name="chk1" value="all" id="all"> All</label></li></div> -->
+     <div class="col-sm-6">
+       <li data-ng-repeat="tag in profCtrl.tags">
+         <label for="chk1"><input type="checkbox" value="{tag}" id="{tag}" data-ng-model="tag.display" data-ng-true-value="true" data-ng-false-value="false" data-ng-change="profCtrl.setProjectsByTags()"> {{tag.tag}}</label>
+       </li>
+     </div>
    </ul>
  </div>
 

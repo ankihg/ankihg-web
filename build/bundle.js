@@ -32069,8 +32069,27 @@
 	      }
 	    ];
 
+	    var tags = null;
+
 	    this.getProjects = function() {
 	      return projects;
+	    }
+
+	    this.getTags = function() {
+	      return tags || calcTags();
+	    }
+
+	    var calcTags = function() {
+	      return tags = projects.map(function(p) {
+	        return p.tags;
+	      }).reduce(function(uniqueTags, projectTags) {
+	        projectTags.filter(function(tag) {
+	          return uniqueTags.indexOf(tag) < 0;
+	        }).forEach(function (tag) {
+	          uniqueTags.push(tag);
+	        });
+	        return uniqueTags;
+	      }, []);
 	    }
 
 	    return this;
@@ -32934,11 +32953,33 @@
 	  app.controller('ProfessionalController', ['$scope', 'ProjectService', function($scope, ProjectService) {
 
 	    var vm = this;
-	    vm.projects = ProjectService.getProjects();
+	    vm.tags = ProjectService.getTags().map(function(tag) {
+	      return {tag: tag, display: false}
+	    });
+
+	    vm.setProjectsByTags = function() {
+	      vm.projects = ProjectService.getProjects().filter(function(project) {
+	        return project.tags.filter(function(pTag) {
+	          return vm.tags.filter(function(sTag) { return sTag.display })
+	          .map(function(sTag) { return sTag.tag })
+	          .indexOf(pTag) >= 0;
+	        }).length > 0;
+	      });
+	      return vm.projects = (vm.projects.length) ? vm.projects : ProjectService.getProjects();
+	    }
+
+	    vm.projects = vm.setProjectsByTags();
+
+
+	    // console.log(project.tags.filter(function(pTag) {
+	    //   return vm.tags.filter(function(sTag) { return sTag.display })
+	    //   .map(function(sTag) { return sTag.tag })
+	    //   .indexOf(pTag) >= 0;
+	    // }));
 
 	    vm.education = [
 	      {
-	        title:   "code 301: intermediate software development",
+	        title: "code 301: intermediate software development",
 	        place: "code fellows, seattle, wa",
 	        url: "https://www.codefellows.org/courses/code-301/intermediate-software-development",
 	        date: "january 2016"
@@ -32949,8 +32990,8 @@
 	        url: "http://www.willamette.edu/cla/cs/",
 	        date: "2011 - 2015"
 	      }
-
 	    ];
+
 
 	    /*<script src="vendor/page.js"></script>
 
