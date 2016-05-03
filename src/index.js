@@ -27,7 +27,8 @@ app.config(['$routeProvider', function(router) {
     .when('/project-crud', {
       controller: 'ProjectCrudController',
       controllerAs: 'crudCtrl',
-      templateUrl: './views/project-crud.html'
+      templateUrl: './views/project-crud.html',
+      css: ['./styles/base.css', './styles/layout.css', 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css']
     })
 
 }]);

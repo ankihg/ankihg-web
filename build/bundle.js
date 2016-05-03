@@ -73,7 +73,8 @@
 	    .when('/project-crud', {
 	      controller: 'ProjectCrudController',
 	      controllerAs: 'crudCtrl',
-	      templateUrl: './views/project-crud.html'
+	      templateUrl: './views/project-crud.html',
+	      css: ['./styles/base.css', './styles/layout.css', 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css']
 	    })
 
 	}]);
@@ -32147,7 +32148,7 @@
 
 	    this.create = function(project, next) {
 	      console.log('create project');
-	      if (typeof project.tags === String) project.tags = project.tags.split(',');
+	      if (project.tags instanceof String) project.tags = project.tags.split(',');
 	      console.log(project);
 	      $http.post(path, project)
 	        .then(res => {
@@ -32161,7 +32162,7 @@
 
 	    this.update = function(project, next) {
 	      console.log('update project');
-	      if (typeof project.tags === String) project.tags = project.tags.split(', ');
+	      if (project.tags instanceof String) project.tags = project.tags.split(',');
 	      $http.put(path+'/'+project._id, project)
 	        .then(res => {
 	          this.getProjects().forEach((proj, i, arr) => {

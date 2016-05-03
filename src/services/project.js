@@ -22,7 +22,7 @@ module.exports = function(app) {
 
     this.create = function(project, next) {
       console.log('create project');
-      if (typeof project.tags === String) project.tags = project.tags.split(',');
+      if (project.tags instanceof String) project.tags = project.tags.split(',');
       console.log(project);
       $http.post(path, project)
         .then(res => {
@@ -36,7 +36,7 @@ module.exports = function(app) {
 
     this.update = function(project, next) {
       console.log('update project');
-      if (typeof project.tags === String) project.tags = project.tags.split(', ');
+      if (project.tags instanceof String) project.tags = project.tags.split(',');
       $http.put(path+'/'+project._id, project)
         .then(res => {
           this.getProjects().forEach((proj, i, arr) => {
