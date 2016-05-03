@@ -23,6 +23,11 @@ app.config(['$routeProvider', function(router) {
       controllerAs: 'profCtrl',
       templateUrl: './views/professional.html',
       css: ['./styles/base.css', './styles/layout.css', 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css']
-    });
+    })
+    .when('/project-crud', {
+      controller: 'ProjectCrudController',
+      controllerAs: 'crudCtrl',
+      templateUrl: './views/project-crud.html'
+    })
 
 }]);

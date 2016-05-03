@@ -53,8 +53,8 @@
 	const app = angular.module('AnkiApp', ['ngRoute', 'routeStyles']);
 
 	__webpack_require__(6)(app);
-	__webpack_require__(9)(app);
-	__webpack_require__(14)(app);
+	__webpack_require__(10)(app);
+	__webpack_require__(15)(app);
 
 	app.config(['$routeProvider', function(router) {
 	  router
@@ -69,7 +69,12 @@
 	      controllerAs: 'profCtrl',
 	      templateUrl: './views/professional.html',
 	      css: ['./styles/base.css', './styles/layout.css', 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css']
-	    });
+	    })
+	    .when('/project-crud', {
+	      controller: 'ProjectCrudController',
+	      controllerAs: 'crudCtrl',
+	      templateUrl: './views/project-crud.html'
+	    })
 
 	}]);
 
@@ -32054,6 +32059,7 @@
 	module.exports = function(app) {
 	  __webpack_require__(7)(app);
 	  __webpack_require__(8)(app);
+	  __webpack_require__(9)(app);
 	}
 
 
@@ -32089,11 +32095,16 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	module.exports = function(app) {
-	  __webpack_require__(10)(app);
-	  __webpack_require__(13)(app);
+	  app.directive('projectCrud', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/project-crud.html'
+	    }
+	  })
 	}
 
 
@@ -32102,10 +32113,20 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
+	  __webpack_require__(11)(app);
+	  __webpack_require__(14)(app);
+	}
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(app) {
 
 	  app.factory('ProjectService', ['$http', function($http) {
 
-	    var path = __webpack_require__(11).serverUrl+'/projects';
+	    var path = __webpack_require__(12).serverUrl+'/projects';
 	    var projects = null;
 	    var tags = null;
 
@@ -32148,7 +32169,7 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {exports.DB_PORT = process.env.MY_DB_URI || 'mongodb://localhost/db';
@@ -32158,10 +32179,10 @@
 	exports.serverUrl = 'http://localhost:'+exports.serverPort;
 	exports.clientServerUrl = 'http://localhost:'+exports.clientServerPort;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -32258,7 +32279,7 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -32278,18 +32299,19 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
-	  __webpack_require__(15)(app);
 	  __webpack_require__(16)(app);
+	  __webpack_require__(17)(app);
+	  __webpack_require__(18)(app);
 
 	}
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33149,7 +33171,7 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33214,6 +33236,32 @@
 	    return vm;
 	  }])
 
+	}
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	module.exports = function(app) {
+	  app.controller('ProjectCrudController', ['ProjectService', function(ProjectService) {
+
+	    var vm = this;
+	    vm.projects = null;
+
+	    vm.getProjects = function() {
+	      console.log('crud get projects');
+	      ProjectService.getProjects(function(projects) {
+	        vm.projects = projects;
+	      })
+	    }
+
+
+
+
+	    return vm;
+
+	  }]);
 	}
 
 

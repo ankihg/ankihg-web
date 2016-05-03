@@ -1,0 +1,9 @@
+<section data-ng-init="crudCtrl.getProjects()">
+
+  <ul>
+    <li data-ng-repeat="project in crudCtrl.projects">
+      <project-crud project="project" />
+    </li>
+  </ul>
+
+</section>
