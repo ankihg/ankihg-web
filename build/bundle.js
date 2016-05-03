@@ -32147,6 +32147,16 @@
 
 	    this.delete = function(project, next) {
 	      console.log('delete project');
+	      $http.delete(path+'/'+project._id)
+	        .then(res => {
+	          console.log('got delete response');
+	          this.getProjects().splice(this.getProjects().indexOf(project), 1);
+	        })
+	        .catch(err => {
+	          console.log(err);
+	        });
+
+
 	      next && next();
 	    }
 
