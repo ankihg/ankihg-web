@@ -12,7 +12,10 @@ module.exports = function(app) {
     }
 
     vm.create = function(project) {
-
+      console.log('create', project);
+      ProjectService.create(project, function() {
+        console.log('back from create project');
+      });
     }
 
     vm.update = function(project) {

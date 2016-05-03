@@ -32145,6 +32145,23 @@
 	        })
 	    }
 
+	    this.create = function(project, next) {
+	      console.log('create project');
+	      project.tags = project.tags.split(', ');
+	      console.log(project);
+	      $http.post(path, project)
+	        .then(res => {
+	          console.log('got create response');
+	          console.log(res.data);
+	          projects.push(res.data.data);
+	          next && next(res.data.data);
+	        })
+	        .catch(err => {
+	          console.log(err);
+	        });
+
+	    }
+
 	    this.delete = function(project, next) {
 	      console.log('delete project');
 	      $http.delete(path+'/'+project._id)
@@ -33273,7 +33290,10 @@
 	    }
 
 	    vm.create = function(project) {
-
+	      console.log('create', project);
+	      ProjectService.create(project, function() {
+	        console.log('back from create project');
+	      });
 	    }
 
 	    vm.update = function(project) {
