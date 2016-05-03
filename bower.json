@@ -1,0 +1,17 @@
+{
+  "name": "ankihg-web",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "ankihg <hagelin.annika@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ankihg/ankihg-web",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

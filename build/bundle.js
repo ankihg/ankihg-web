@@ -47,25 +47,28 @@
 	'use strict';
 	const angular = __webpack_require__(1);
 	__webpack_require__(3);
+	__webpack_require__(5)
 	// require('style!css!./styles/home.css');
 
-	const app = angular.module('AnkiApp', ['ngRoute']);
+	const app = angular.module('AnkiApp', ['ngRoute', 'routeStyles']);
 
-	__webpack_require__(5)(app);
-	__webpack_require__(8)(app);
-	__webpack_require__(13)(app);
+	__webpack_require__(6)(app);
+	__webpack_require__(9)(app);
+	__webpack_require__(14)(app);
 
 	app.config(['$routeProvider', function(router) {
 	  router
 	    .when('/home', {
 	      controller: 'HomeController',
 	      controllerAs: 'homeCtrl',
-	      templateUrl: './views/home.html'
+	      templateUrl: './views/home.html',
+	      css: './styles/home.css'
 	    })
 	    .when('/professional', {
 	      controller: 'ProfessionalController',
 	      controllerAs: 'profCtrl',
-	      templateUrl: './views/professional.html'
+	      templateUrl: './views/professional.html',
+	      css: ['./styles/base.css', './styles/layout.css', 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css']
 	    });
 
 	}]);
@@ -31993,16 +31996,69 @@
 
 /***/ },
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = function(app) {
-	  __webpack_require__(6)(app);
-	  __webpack_require__(7)(app);
-	}
+	/**
+	 * Created by Zack Boman on 1/31/14.
+	 * http://www.zackboman.com or tennisgent@gmail.com
+	 */
+
+	(function(){
+	'use strict';
+
+	    angular.module('routeStyles', ['ngRoute'])
+	    
+	        .directive('head', ['$rootScope','$compile','$interpolate',
+	            function($rootScope, $compile, $interpolate){
+	                // this allows for support of custom interpolation symbols
+	                var startSym = $interpolate.startSymbol(),
+	                    endSym = $interpolate.endSymbol(),
+	                    html = ['<link rel="stylesheet" ng-repeat="(routeCtrl, cssUrl) in routeStyles" ng-href="',startSym,'cssUrl',endSym,'">'].join('');
+	                return {
+	                    restrict: 'E',
+	                    link: function(scope, elem){
+	                        elem.append($compile(html)(scope));
+	                        scope.routeStyles = {};
+	                        $rootScope.$on('$routeChangeStart', function (e, next) {
+	                            if(next && next.$$route && next.$$route.css){
+	                                if(!angular.isArray(next.$$route.css)){
+	                                    next.$$route.css = [next.$$route.css];
+	                                }
+	                                angular.forEach(next.$$route.css, function(sheet){
+	                                    scope.routeStyles[sheet] = sheet;
+	                                });
+	                            }
+	                        });
+	                        $rootScope.$on('$routeChangeSuccess', function(e, current, previous) {
+	                            if (previous && previous.$$route && previous.$$route.css) {
+	                                if (!angular.isArray(previous.$$route.css)) {
+	                                    previous.$$route.css = [previous.$$route.css];
+	                                }
+	                                angular.forEach(previous.$$route.css, function (sheet) {
+	                                    scope.routeStyles[sheet] = undefined;
+	                                });
+	                            }
+	                        });
+	                    }
+	                };
+	            }
+	        ]);
+
+	})();
 
 
 /***/ },
 /* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(app) {
+	  __webpack_require__(7)(app);
+	  __webpack_require__(8)(app);
+	}
+
+
+/***/ },
+/* 7 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -32017,7 +32073,7 @@
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -32032,24 +32088,24 @@
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
-	  __webpack_require__(9)(app);
-	  __webpack_require__(12)(app);
+	  __webpack_require__(10)(app);
+	  __webpack_require__(13)(app);
 	}
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
 
 	  app.factory('ProjectService', ['$http', function($http) {
 
-	    var path = __webpack_require__(10).serverUrl+'/projects';
+	    var path = __webpack_require__(11).serverUrl+'/projects';
 	    var projects = null;
 	    var tags = null;
 
@@ -32092,7 +32148,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {exports.DB_PORT = process.env.MY_DB_URI || 'mongodb://localhost/db';
@@ -32102,10 +32158,10 @@
 	exports.serverUrl = 'http://localhost:'+exports.serverPort;
 	exports.clientServerUrl = 'http://localhost:'+exports.clientServerPort;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -32202,7 +32258,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -32222,18 +32278,18 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
-	  __webpack_require__(14)(app);
 	  __webpack_require__(15)(app);
+	  __webpack_require__(16)(app);
 
 	}
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33092,7 +33148,7 @@
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
