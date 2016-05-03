@@ -759,6 +759,7 @@ module.exports = function(app) {
     };
 
     Bird.prototype.create = function() {
+      console.log('make bird');
      this.canvas = document.createElement('canvas');
 
      console.log(document.getElementById('canvasWrap'));
