@@ -16,6 +16,20 @@ module.exports = (router, models) => {
         if (err) return res.status(500).json({msg: 'error creating project', err:err, data:null});
         return res.status(200).json({msg: 'created project', err:null, data:project});
       })
-    })
+    });
+
+    router.route('/projects/:id')
+      .put((req, res) => {
+        Project.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, project) => {
+          if (err) return res.status(500).json({msg: 'error updating project', err:err, data:null});
+          return res.status(200).json({msg: 'updated project', err:null, data:project});
+        });
+      })
+      .delete((req, res) => {
+        Project.findByIdAndRemove(req.params.id, (err) => {
+          if (err) return res.status(500).json({msg: 'error deleting project', err:err, data:null});
+          return res.status(200).json({msg: 'project deleted', err:null, data:null});
+        });
+      })
 
 }
