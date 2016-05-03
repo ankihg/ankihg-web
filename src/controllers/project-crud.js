@@ -20,7 +20,11 @@ module.exports = function(app) {
 
     vm.update = function(project) {
       console.log('update', project);
+      ProjectService.update(project, function() {
+        console.log('back from update project');
+      });
     };
+    vm.update.displayed = null;
 
     vm.delete = function(project) {
       console.log('delete ', project);
@@ -29,7 +33,9 @@ module.exports = function(app) {
       });
     }
 
-
+    vm.copyProject = function(project) {
+      return JSON.parse(JSON.stringify(project));
+    }
 
 
     return vm;
