@@ -20,6 +20,11 @@ module.exports = function(app) {
         })
     }
 
+    this.delete = function(project, next) {
+      console.log('delete project');
+      next && next();
+    }
+
     this.getTags = function() {
       return tags || calcTags();
     }

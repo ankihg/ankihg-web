@@ -1,4 +1,8 @@
 <div>
-<h1>{{project.name}}</h1>
-{{project.about}}
+  <h1>{{project.name}}</h1>
+  {{project.about}}
+
+  <button type="submit" data-ng-click="">update</button>
+  <button type="submit" data-ng-click="crudCtrl.delete(project)">delete</button>
+
 </div>
