@@ -16,6 +16,9 @@ module.exports = function(app) {
           .catch(err => {
             cb(err);
           });
+      },
+      getToken() {
+        return token || $window.localStorage.token;
       }
     }
 

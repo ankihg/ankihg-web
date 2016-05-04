@@ -32148,6 +32148,9 @@
 	          .catch(err => {
 	            cb(err);
 	          });
+	      },
+	      getToken() {
+	        return token || $window.localStorage.token;
 	      }
 	    }
 
@@ -32273,7 +32276,7 @@
 
 	module.exports = function(app) {
 
-	  app.factory('ProjectService', ['$http', function($http) {
+	  app.factory('ProjectService', ['$http', 'AuthService', function($http, AuthService) {
 
 	    var path = __webpack_require__(12).serverUrl+'/projects';
 	    var projects = null;
@@ -32297,7 +32300,11 @@
 	      console.log('create project');
 	      if (project.tags instanceof String) project.tags = project.tags.split(',');
 	      console.log(project);
-	      $http.post(path, project)
+	      $http.post(path, project, {
+	        headers: {
+	          token: AuthService.getToken()
+	        }
+	      })
 	        .then(res => {
 	          projects.push(res.data.data);
 	          next && next(res.data.data);
@@ -32310,7 +32317,11 @@
 	    this.update = function(project, next) {
 	      console.log('update project');
 	      if (project.tags instanceof String) project.tags = project.tags.split(',');
-	      $http.put(path+'/'+project._id, project)
+	      $http.put(path+'/'+project._id, project, {
+	        headers: {
+	          token: AuthService.getToken()
+	        }
+	      })
 	        .then(res => {
 	          this.getProjects().forEach((proj, i, arr) => {
 	            if (proj._id === project._id) arr[i] = project;
@@ -32321,7 +32332,11 @@
 
 	    this.delete = function(project, next) {
 	      console.log('delete project');
-	      $http.delete(path+'/'+project._id)
+	      $http.delete(path+'/'+project._id, {
+	        headers: {
+	          token: AuthService.getToken()
+	        }
+	      })
 	        .then(res => {
 	          console.log('got delete response');
 	          this.getProjects().splice(this.getProjects().indexOf(project), 1);
