@@ -53,8 +53,8 @@
 	const app = angular.module('AnkiApp', ['ngRoute', 'routeStyles']);
 
 	__webpack_require__(6)(app);
-	__webpack_require__(11)(app);
-	__webpack_require__(17)(app);
+	__webpack_require__(12)(app);
+	__webpack_require__(18)(app);
 
 	app.config(['$routeProvider', function(router) {
 	  router
@@ -32064,91 +32064,19 @@
 
 	module.exports = function(app) {
 	  __webpack_require__(7)(app);
-	  __webpack_require__(8)(app);
-	  __webpack_require__(9)(app);
 	  __webpack_require__(10)(app);
-	}
-
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	module.exports = function(app) {
-	  app.directive('project', function() {
-	    return {
-	      restrict: 'E',
-	      replace: true,
-	      templateUrl: './directives/templates/project.html'
-	    }
-	  });
-	}
-
-
-/***/ },
-/* 8 */
-/***/ function(module, exports) {
-
-	module.exports = function(app) {
-	  app.directive('education', function() {
-	    return {
-	      restrict: 'E',
-	      replace: true,
-	      templateUrl: './directives/templates/education.html'
-	    }
-	  });
-	}
-
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	module.exports = function(app) {
-	  app.directive('projectCrud', function() {
-	    return {
-	      restrict: 'E',
-	      replace: true,
-	      templateUrl: './directives/templates/project-crud.html'
-	    }
-	  })
-	}
-
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	module.exports = function(app) {
-	  app.directive('navMenu', function() {
-	    return {
-	      restrict: 'E',
-	      replace: true,
-	      templateUrl: './directives/templates/nav-menu.html'
-	    }
-	  });
-	}
-
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = function(app) {
-	  __webpack_require__(12)(app);
-	  __webpack_require__(15)(app);
-	  __webpack_require__(16)(app);
+	  __webpack_require__(11)(app);
 	  // require('./crud.js')(app);
 	}
 
 
 /***/ },
-/* 12 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
 	  app.factory('AuthService', ['$http', '$window', function($http, $window) {
-	    var serverUrl = __webpack_require__(13).serverUrl;
+	    var serverUrl = __webpack_require__(8).serverUrl;
 
 	    var token;
 
@@ -32189,7 +32117,7 @@
 
 
 /***/ },
-/* 13 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {exports.DB_PORT = process.env.MY_DB_URI || 'mongodb://localhost/db';
@@ -32199,10 +32127,10 @@
 	exports.serverUrl = 'http://localhost:'+exports.serverPort;
 	exports.clientServerUrl = 'http://localhost:'+exports.clientServerPort;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ },
-/* 14 */
+/* 9 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -32299,14 +32227,14 @@
 
 
 /***/ },
-/* 15 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
 
 	  app.factory('ProjectService', ['$http', 'AuthService', '$location', function($http, AuthService, $location) {
 
-	    var path = __webpack_require__(13).serverUrl+'/projects';
+	    var path = __webpack_require__(8).serverUrl+'/projects';
 	    var projects = null;
 	    var tags = null;
 
@@ -32407,7 +32335,7 @@
 
 
 /***/ },
-/* 16 */
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -32427,19 +32355,20 @@
 
 
 /***/ },
-/* 17 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
-	  __webpack_require__(18)(app);
-	  __webpack_require__(19)(app);
-	  __webpack_require__(20)(app);
-	  __webpack_require__(21)(app);
+	  __webpack_require__(13)(app);
+	  __webpack_require__(14)(app);
+	  __webpack_require__(15)(app);
+	  __webpack_require__(16)(app);
+	  __webpack_require__(17)(app);
 	}
 
 
 /***/ },
-/* 18 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33299,7 +33228,31 @@
 
 
 /***/ },
-/* 19 */
+/* 14 */
+/***/ function(module, exports) {
+
+	module.exports = function(app) {
+	  app.controller('NavMenuController', ['NavService', function(NavService) {
+
+	    var vm = this;
+	    vm.plz = 'plz respond';
+
+	    vm.toProfessional = NavService.toProfessional;
+	    vm.toHome = NavService.toHome;
+
+	    vm.links = [
+	      {name: 'home', action: vm.toHome},
+	      {name: 'professional', action: vm.toProfessional}
+	    ]
+
+	    return vm;
+
+	  }]);
+	};
+
+
+/***/ },
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33368,7 +33321,7 @@
 
 
 /***/ },
-/* 20 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33391,7 +33344,7 @@
 
 
 /***/ },
-/* 21 */
+/* 17 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33437,6 +33390,97 @@
 	    return vm;
 
 	  }]);
+	}
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(app) {
+	  __webpack_require__(19)(app);
+	  __webpack_require__(20)(app);
+	  __webpack_require__(21)(app);
+	  __webpack_require__(22)(app);
+	  __webpack_require__(23)(app);
+
+	}
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	module.exports = function(app) {
+	  app.directive('project', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/project.html'
+	    }
+	  });
+	}
+
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	module.exports = function(app) {
+	  app.directive('education', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/education.html'
+	    }
+	  });
+	}
+
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	module.exports = function(app) {
+	  app.directive('projectCrud', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/project-crud.html'
+	    }
+	  })
+	}
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	module.exports = function(app) {
+	  app.directive('navMenu', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/nav-menu.html',
+	      controller: 'NavMenuController',
+	      controllerAs: 'navMenuCtrl'
+	    }
+	  });
+	}
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = function(app) {
+	  app.directive('menuButton', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/menu-button.html'
+	    }
+	  });
 	}
 
 

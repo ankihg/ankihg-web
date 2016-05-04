@@ -3,4 +3,6 @@ module.exports = function(app) {
   require('./education.js')(app);
   require('./project-crud.js')(app);
   require('./nav-menu.js')(app);
+  require('./menu-button.js')(app);
+
 }

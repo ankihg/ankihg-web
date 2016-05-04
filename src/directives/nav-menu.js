@@ -3,7 +3,9 @@ module.exports = function(app) {
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: './directives/templates/nav-menu.html'
+      templateUrl: './directives/templates/nav-menu.html',
+      controller: 'NavMenuController',
+      controllerAs: 'navMenuCtrl'
     }
   });
 }

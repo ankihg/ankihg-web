@@ -6,9 +6,9 @@ require('../bower_components/angular-route-styles/route-styles.js')
 
 const app = angular.module('AnkiApp', ['ngRoute', 'routeStyles']);
 
-require('./directives/index.js')(app);
 require('./services/index.js')(app);
 require('./controllers/index.js')(app);
+require('./directives/index.js')(app);
 
 app.config(['$routeProvider', function(router) {
   router
