@@ -22,7 +22,7 @@ app.config(['$routeProvider', function(router) {
       controller: 'ProfessionalController',
       controllerAs: 'profCtrl',
       templateUrl: './views/professional.html',
-      css: ['./styles/base.css', './styles/layout.css', 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css']
+      css: ['./styles/base.css', './styles/layout.css', './styles/nav-menu.css', 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css']
     })
     .when('/project-crud', {
       controller: 'ProjectCrudController',
