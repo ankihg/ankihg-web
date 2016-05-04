@@ -32276,7 +32276,7 @@
 
 	module.exports = function(app) {
 
-	  app.factory('ProjectService', ['$http', 'AuthService', function($http, AuthService) {
+	  app.factory('ProjectService', ['$http', 'AuthService', '$location', function($http, AuthService, $location) {
 
 	    var path = __webpack_require__(12).serverUrl+'/projects';
 	    var projects = null;
@@ -32311,6 +32311,7 @@
 	        })
 	        .catch(err => {
 	          console.log(err);
+	          $location.path('/signin');
 	        });
 	    }
 
@@ -32327,7 +32328,10 @@
 	            if (proj._id === project._id) arr[i] = project;
 	          })
 	        })
-	        .catch(err => console.log(err));
+	        .catch(err => {
+	          console.log(err);
+	          $location.path('/signin');
+	        });
 	    }
 
 	    this.delete = function(project, next) {
@@ -32343,6 +32347,7 @@
 	        })
 	        .catch(err => {
 	          console.log(err);
+	          $location.path('/signin');
 	        });
 
 

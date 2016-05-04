@@ -1,6 +1,6 @@
 module.exports = function(app) {
 
-  app.factory('ProjectService', ['$http', 'AuthService', function($http, AuthService) {
+  app.factory('ProjectService', ['$http', 'AuthService', '$location', function($http, AuthService, $location) {
 
     var path = require('../../config').serverUrl+'/projects';
     var projects = null;
@@ -35,6 +35,7 @@ module.exports = function(app) {
         })
         .catch(err => {
           console.log(err);
+          $location.path('/signin');
         });
     }
 
@@ -51,7 +52,10 @@ module.exports = function(app) {
             if (proj._id === project._id) arr[i] = project;
           })
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err);
+          $location.path('/signin');
+        });
     }
 
     this.delete = function(project, next) {
@@ -67,6 +71,7 @@ module.exports = function(app) {
         })
         .catch(err => {
           console.log(err);
+          $location.path('/signin');
         });
 
 
