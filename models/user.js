@@ -7,7 +7,7 @@ module.exports = function(mongoose, models) {
   const userSchema = new mongoose.Schema({
     username: String,
     authenticaton: {
-      email: String,
+      username: String,
       password: String
     }
   });
@@ -24,6 +24,6 @@ module.exports = function(mongoose, models) {
     return jwt.sign({id: this._id}, process.env.APP_SECRET || 'changeme');
   };
 
-  models.User = mongoosel.model('User', userSchema);
+  models.User = mongoose.model('User', userSchema);
 
 }
