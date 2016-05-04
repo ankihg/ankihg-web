@@ -1,10 +1,11 @@
 'use strict';
 const angular = require('angular');
 require('angular-route');
+require('angular-sanitize');
 require('../bower_components/angular-route-styles/route-styles.js')
 // require('style!css!./styles/home.css');
 
-const app = angular.module('AnkiApp', ['ngRoute', 'routeStyles']);
+const app = angular.module('AnkiApp', ['ngRoute', 'routeStyles', 'ngSanitize']);
 
 require('./services/index.js')(app);
 require('./controllers/index.js')(app);
