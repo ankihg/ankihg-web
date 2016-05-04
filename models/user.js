@@ -24,6 +24,6 @@ module.exports = function(mongoose, models) {
     return jwt.sign({id: this._id}, process.env.APP_SECRET || 'changeme');
   };
 
-  models.User = mongoose.model('User', userSchema);
+  module.exports.User = models.User = mongoose.model('User', userSchema);
 
 }

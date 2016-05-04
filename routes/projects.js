@@ -1,4 +1,5 @@
 'use strict';
+const jwtAuth = require('../lib/jwt_auth');
 module.exports = (router, models) => {
 
   const Project = models.Project;
@@ -10,7 +11,7 @@ module.exports = (router, models) => {
         return res.status(200).json({msg: 'all projects', err:null, data:projects});
       })
     })
-    .post((req, res) => {
+    .post(jwtAuth, (req, res) => {
       var newProject = new Project(req.body);
       newProject.save((err, project) => {
         if (err) return res.status(500).json({msg: 'error creating project', err:err, data:null});
@@ -19,13 +20,13 @@ module.exports = (router, models) => {
     });
 
     router.route('/projects/:id')
-      .put((req, res) => {
+      .put(jwtAuth, (req, res) => {
         Project.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, project) => {
           if (err) return res.status(500).json({msg: 'error updating project', err:err, data:null});
           return res.status(200).json({msg: 'updated project', err:null, data:project});
         });
       })
-      .delete((req, res) => {
+      .delete(jwtAuth, (req, res) => {
         Project.findByIdAndRemove(req.params.id, (err) => {
           if (err) return res.status(500).json({msg: 'error deleting project', err:err, data:null});
           return res.status(200).json({msg: 'project deleted', err:null, data:null});
