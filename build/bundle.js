@@ -53,8 +53,8 @@
 	const app = angular.module('AnkiApp', ['ngRoute', 'routeStyles']);
 
 	__webpack_require__(6)(app);
-	__webpack_require__(10)(app);
-	__webpack_require__(16)(app);
+	__webpack_require__(11)(app);
+	__webpack_require__(17)(app);
 
 	app.config(['$routeProvider', function(router) {
 	  router
@@ -32066,6 +32066,7 @@
 	  __webpack_require__(7)(app);
 	  __webpack_require__(8)(app);
 	  __webpack_require__(9)(app);
+	  __webpack_require__(10)(app);
 	}
 
 
@@ -32116,13 +32117,16 @@
 
 /***/ },
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	module.exports = function(app) {
-	  __webpack_require__(11)(app);
-	  __webpack_require__(14)(app);
-	  __webpack_require__(15)(app);
-	  // require('./crud.js')(app);
+	  app.directive('navMenu', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/nav-menu.html'
+	    }
+	  });
 	}
 
 
@@ -32131,8 +32135,20 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
+	  __webpack_require__(12)(app);
+	  __webpack_require__(15)(app);
+	  __webpack_require__(16)(app);
+	  // require('./crud.js')(app);
+	}
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(app) {
 	  app.factory('AuthService', ['$http', '$window', function($http, $window) {
-	    var serverUrl = __webpack_require__(12).serverUrl;
+	    var serverUrl = __webpack_require__(13).serverUrl;
 
 	    var token;
 
@@ -32161,7 +32177,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {exports.DB_PORT = process.env.MY_DB_URI || 'mongodb://localhost/db';
@@ -32171,10 +32187,10 @@
 	exports.serverUrl = 'http://localhost:'+exports.serverPort;
 	exports.clientServerUrl = 'http://localhost:'+exports.clientServerPort;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -32271,14 +32287,14 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
 
 	  app.factory('ProjectService', ['$http', 'AuthService', '$location', function($http, AuthService, $location) {
 
-	    var path = __webpack_require__(12).serverUrl+'/projects';
+	    var path = __webpack_require__(13).serverUrl+'/projects';
 	    var projects = null;
 	    var tags = null;
 
@@ -32379,7 +32395,7 @@
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -32399,19 +32415,19 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
-	  __webpack_require__(17)(app);
 	  __webpack_require__(18)(app);
 	  __webpack_require__(19)(app);
 	  __webpack_require__(20)(app);
+	  __webpack_require__(21)(app);
 	}
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33271,7 +33287,7 @@
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33340,7 +33356,7 @@
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33363,7 +33379,7 @@
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
