@@ -54,7 +54,7 @@
 
 	__webpack_require__(6)(app);
 	__webpack_require__(10)(app);
-	__webpack_require__(15)(app);
+	__webpack_require__(16)(app);
 
 	app.config(['$routeProvider', function(router) {
 	  router
@@ -75,6 +75,11 @@
 	      controllerAs: 'crudCtrl',
 	      templateUrl: './views/project-crud.html',
 	      css: ['./styles/base.css', './styles/layout.css', 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css']
+	    })
+	    .when('/signin', {
+	      controller: 'UserController',
+	      controllerAs: 'userCtrl',
+	      templateUrl: './views/signin.html'
 	    })
 
 	}]);
@@ -32116,6 +32121,7 @@
 	module.exports = function(app) {
 	  __webpack_require__(11)(app);
 	  __webpack_require__(14)(app);
+	  __webpack_require__(15)(app);
 	  // require('./crud.js')(app);
 	}
 
@@ -32125,90 +32131,30 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
+	  app.factory('AuthService', ['$http', '$window', function($http, $window) {
+	    var serverUrl = __webpack_require__(12).serverUrl;
 
-	  app.factory('ProjectService', ['$http', function($http) {
+	    var token;
 
-	    var path = __webpack_require__(12).serverUrl+'/projects';
-	    var projects = null;
-	    var tags = null;
-
-	    this.getProjects = function(next) {
-	      if (projects) return (next) ? next(projects) : projects;
-	      $http.get(path)
-	        .then(res => {
-	          console.log(res.data);
-	          projects = res.data.data;
-	          calcTags();
-	          if (next) next(projects);
-	        })
-	        .catch(err => {
-	          console.log(err);
-	        })
-	    }
-
-	    this.create = function(project, next) {
-	      console.log('create project');
-	      if (project.tags instanceof String) project.tags = project.tags.split(',');
-	      console.log(project);
-	      $http.post(path, project)
-	        .then(res => {
-	          projects.push(res.data.data);
-	          next && next(res.data.data);
-	        })
-	        .catch(err => {
-	          console.log(err);
-	        });
-	    }
-
-	    this.update = function(project, next) {
-	      console.log('update project');
-	      if (project.tags instanceof String) project.tags = project.tags.split(',');
-	      $http.put(path+'/'+project._id, project)
-	        .then(res => {
-	          this.getProjects().forEach((proj, i, arr) => {
-	            if (proj._id === project._id) arr[i] = project;
+	    var auth = {
+	      signUp(user, cb) {
+	        console.log('sign up user from auth service');
+	        $http.post(serverUrl+'/signup', user)
+	          .then(res => {
+	            if (!res.data.token) return console.log('signup failed');
+	            token = $window.localStorage.token = res.data.token;
+	            cb && cb(null, res)
 	          })
-	        })
-	        .catch(err => console.log(err));
+	          .catch(err => {
+	            cb(err);
+	          });
+	      }
 	    }
 
-	    this.delete = function(project, next) {
-	      console.log('delete project');
-	      $http.delete(path+'/'+project._id)
-	        .then(res => {
-	          console.log('got delete response');
-	          this.getProjects().splice(this.getProjects().indexOf(project), 1);
-	        })
-	        .catch(err => {
-	          console.log(err);
-	        });
-
-
-	      next && next();
-	    }
-
-	    this.getTags = function() {
-	      return tags || calcTags();
-	    }
-
-	    var calcTags = function() {
-	      return tags = projects.map(function(p) {
-	        return p.tags;
-	      }).reduce(function(uniqueTags, projectTags) {
-	        projectTags.filter(function(tag) {
-	          return uniqueTags.indexOf(tag) < 0;
-	        }).forEach(function (tag) {
-	          uniqueTags.push(tag);
-	        });
-	        return uniqueTags;
-	      }, []);
-	    }
-
-	    return this;
+	    return auth;
 
 	  }]);
-
-	}
+	};
 
 
 /***/ },
@@ -32323,6 +32269,97 @@
 
 /***/ },
 /* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(app) {
+
+	  app.factory('ProjectService', ['$http', function($http) {
+
+	    var path = __webpack_require__(12).serverUrl+'/projects';
+	    var projects = null;
+	    var tags = null;
+
+	    this.getProjects = function(next) {
+	      if (projects) return (next) ? next(projects) : projects;
+	      $http.get(path)
+	        .then(res => {
+	          console.log(res.data);
+	          projects = res.data.data;
+	          calcTags();
+	          if (next) next(projects);
+	        })
+	        .catch(err => {
+	          console.log(err);
+	        })
+	    }
+
+	    this.create = function(project, next) {
+	      console.log('create project');
+	      if (project.tags instanceof String) project.tags = project.tags.split(',');
+	      console.log(project);
+	      $http.post(path, project)
+	        .then(res => {
+	          projects.push(res.data.data);
+	          next && next(res.data.data);
+	        })
+	        .catch(err => {
+	          console.log(err);
+	        });
+	    }
+
+	    this.update = function(project, next) {
+	      console.log('update project');
+	      if (project.tags instanceof String) project.tags = project.tags.split(',');
+	      $http.put(path+'/'+project._id, project)
+	        .then(res => {
+	          this.getProjects().forEach((proj, i, arr) => {
+	            if (proj._id === project._id) arr[i] = project;
+	          })
+	        })
+	        .catch(err => console.log(err));
+	    }
+
+	    this.delete = function(project, next) {
+	      console.log('delete project');
+	      $http.delete(path+'/'+project._id)
+	        .then(res => {
+	          console.log('got delete response');
+	          this.getProjects().splice(this.getProjects().indexOf(project), 1);
+	        })
+	        .catch(err => {
+	          console.log(err);
+	        });
+
+
+	      next && next();
+	    }
+
+	    this.getTags = function() {
+	      return tags || calcTags();
+	    }
+
+	    var calcTags = function() {
+	      return tags = projects.map(function(p) {
+	        return p.tags;
+	      }).reduce(function(uniqueTags, projectTags) {
+	        projectTags.filter(function(tag) {
+	          return uniqueTags.indexOf(tag) < 0;
+	        }).forEach(function (tag) {
+	          uniqueTags.push(tag);
+	        });
+	        return uniqueTags;
+	      }, []);
+	    }
+
+	    return this;
+
+	  }]);
+
+	}
+
+
+/***/ },
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -32342,19 +32379,19 @@
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(app) {
-	  __webpack_require__(16)(app);
 	  __webpack_require__(17)(app);
 	  __webpack_require__(18)(app);
-
+	  __webpack_require__(19)(app);
+	  __webpack_require__(20)(app);
 	}
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33214,7 +33251,7 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
@@ -33283,7 +33320,30 @@
 
 
 /***/ },
-/* 18 */
+/* 19 */
+/***/ function(module, exports) {
+
+	module.exports = function(app) {
+	  app.controller('UserController', ['AuthService', '$location', function(AuthService, $location) {
+	    var vm = this;
+
+	    vm.signIn = function(user) {
+	      AuthService.signUp(user, function(err, res) {
+	        if (err) return console.log(err);
+	        console.log('successful signup');
+	        $location.path('/project-crud');
+	      });
+	    }
+
+
+	    return vm;
+
+	  }]);
+	}
+
+
+/***/ },
+/* 20 */
 /***/ function(module, exports) {
 
 	module.exports = function(app) {

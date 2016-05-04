@@ -23,7 +23,7 @@ module.exports = function(router, models) {
       console.log(user);
       if (!user) return res.status(401).json({msg:'user not found', err: true, data:null});
       if (!user.comparePassword(req.basicHttp.password))
-        return res.status(401).json({msg:'get off my lawn', err: true, data:null, token:'trespassing'});
+        return res.status(401).json({msg:'trespassing', err: true, data:null, token:null});
       return res.status(200).json({msg:'welcome', err: null, data:null, token: user.generateToken()});
     });
   });

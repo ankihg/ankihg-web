@@ -30,5 +30,10 @@ app.config(['$routeProvider', function(router) {
       templateUrl: './views/project-crud.html',
       css: ['./styles/base.css', './styles/layout.css', 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css']
     })
+    .when('/signin', {
+      controller: 'UserController',
+      controllerAs: 'userCtrl',
+      templateUrl: './views/signin.html'
+    })
 
 }]);
