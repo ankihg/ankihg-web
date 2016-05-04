@@ -32167,6 +32167,18 @@
 	      },
 	      getToken() {
 	        return token || $window.localStorage.token;
+	      },
+	      signIn(user, cb) {
+	        $http.get(serverUrl+'/signin', {
+	          headers: {
+	            authorization: 'Basic ' + btoa(user.username+':'+user.password)
+	          }
+	        }).then(res => {
+	          token = $window.localStorage.token = res.data.token;
+	          return cb && cb(null, res);
+	        }).catch(err => {
+	          return cb && cb(err);
+	        })
 	      }
 	    }
 
@@ -33364,7 +33376,7 @@
 	    var vm = this;
 
 	    vm.signIn = function(user) {
-	      AuthService.signUp(user, function(err, res) {
+	      AuthService.signIn(user, function(err, res) {
 	        if (err) return console.log(err);
 	        console.log('successful signup');
 	        $location.path('/project-crud');

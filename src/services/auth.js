@@ -19,6 +19,18 @@ module.exports = function(app) {
       },
       getToken() {
         return token || $window.localStorage.token;
+      },
+      signIn(user, cb) {
+        $http.get(serverUrl+'/signin', {
+          headers: {
+            authorization: 'Basic ' + btoa(user.username+':'+user.password)
+          }
+        }).then(res => {
+          token = $window.localStorage.token = res.data.token;
+          return cb && cb(null, res);
+        }).catch(err => {
+          return cb && cb(err);
+        })
       }
     }
 
