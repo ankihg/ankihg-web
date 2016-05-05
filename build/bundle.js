@@ -58,7 +58,7 @@
 	__webpack_require__(20)(app);
 
 	app.config(['$routeProvider', '$locationProvider', function(router, $locationProvider) {
-	  $locationProvider.html5Mode(false);
+	  $locationProvider.html5Mode(false); //maybe remove
 	  router
 	    .when('/home', {
 	      controller: 'HomeController',
@@ -33074,6 +33074,10 @@
 	module.exports = function(app) {
 	  app.factory('NavService', ['$location', function($location) {
 
+	    this.getLocation = function() {
+	      return $location.path();
+	    }
+
 	    this.toProfessional = function() {
 	      $location.path('/professional');
 	    }
@@ -33970,22 +33974,20 @@
 	    var vm = this;
 	    vm.plz = 'plz respond';
 
-	    vm.youarehere = 'home';
+	    vm.youarehere = NavService.getLocation();
 
 	    vm.toProfessional = function() {
-	      console.log('menu to prof');
-	      vm.youarehere = 'professional';
 	      NavService.toProfessional();
+	      vm.youarehere = NavService.getLocation();
 	    };
 	    vm.toHome = function() {
-	      console.log('menu to home');
-	      vm.youarehere = 'home';
 	      NavService.toHome();
+	      vm.youarehere = NavService.getLocation();
 	    };
 
 	    vm.links = [
-	      {name: 'home', action: vm.toHome, url:'#/home'},
-	      {name: 'professional', action: vm.toProfessional, url:'#/professional'}
+	      {name: 'home', action: vm.toHome},
+	      {name: 'professional', action: vm.toProfessional}
 	    ]
 
 
@@ -34226,9 +34228,10 @@
 	      link: function(scope, element, attrs, controller) {
 	        element.on('mouseover', function() {
 	          console.log('hover');
-	          console.log(attrs.ctrl.youarehere);
-	          console.log(attrs.link.name);
-	          console.log(attrs.ctrl.youarehere === attrs.link.name);
+	          var ctrl = JSON.parse(attrs.ctrl);
+	          var link = JSON.parse(attrs.link);
+	          // console.log(link.name);
+	          console.log(ctrl.youarehere === '/'+link.name);
 	        })
 	      }
 	    }

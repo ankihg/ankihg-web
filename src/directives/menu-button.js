@@ -7,9 +7,10 @@ module.exports = function(app) {
       link: function(scope, element, attrs, controller) {
         element.on('mouseover', function() {
           console.log('hover');
-          console.log(attrs.ctrl.youarehere);
-          console.log(attrs.link.name);
-          console.log(attrs.ctrl.youarehere === attrs.link.name);
+          var ctrl = JSON.parse(attrs.ctrl);
+          var link = JSON.parse(attrs.link);
+          // console.log(link.name);
+          console.log(ctrl.youarehere === '/'+link.name);
         })
       }
     }

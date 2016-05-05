@@ -4,22 +4,20 @@ module.exports = function(app) {
     var vm = this;
     vm.plz = 'plz respond';
 
-    vm.youarehere = 'home';
+    vm.youarehere = NavService.getLocation();
 
     vm.toProfessional = function() {
-      console.log('menu to prof');
-      vm.youarehere = 'professional';
       NavService.toProfessional();
+      vm.youarehere = NavService.getLocation();
     };
     vm.toHome = function() {
-      console.log('menu to home');
-      vm.youarehere = 'home';
       NavService.toHome();
+      vm.youarehere = NavService.getLocation();
     };
 
     vm.links = [
-      {name: 'home', action: vm.toHome, url:'#/home'},
-      {name: 'professional', action: vm.toProfessional, url:'#/professional'}
+      {name: 'home', action: vm.toHome},
+      {name: 'professional', action: vm.toProfessional}
     ]
 
 
