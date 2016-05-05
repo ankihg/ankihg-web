@@ -33986,8 +33986,8 @@
 	    };
 
 	    vm.links = [
-	      {name: 'home', action: vm.toHome},
-	      {name: 'professional', action: vm.toProfessional}
+	      {name: 'home', action: vm.toHome, path: '/home'},
+	      {name: 'mt employment', action: vm.toProfessional, path: '/professional'}
 	    ]
 
 
@@ -34228,7 +34228,7 @@
 	      link: function(scope, element, attrs, controller) {
 	        var ctrl = JSON.parse(attrs.ctrl);
 	        var link = JSON.parse(attrs.link);
-	        var isHere = ctrl.youarehere === '/'+link.name;
+	        var isHere = ctrl.youarehere === link.path;
 
 	        if (isHere) {
 	          element.find('.flag').css('display', 'inline');

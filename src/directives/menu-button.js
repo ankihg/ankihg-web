@@ -7,7 +7,7 @@ module.exports = function(app) {
       link: function(scope, element, attrs, controller) {
         var ctrl = JSON.parse(attrs.ctrl);
         var link = JSON.parse(attrs.link);
-        var isHere = ctrl.youarehere === '/'+link.name;
+        var isHere = ctrl.youarehere === link.path;
 
         if (isHere) {
           element.find('.flag').css('display', 'inline');
