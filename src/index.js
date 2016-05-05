@@ -11,7 +11,8 @@ require('./services/index.js')(app);
 require('./controllers/index.js')(app);
 require('./directives/index.js')(app);
 
-app.config(['$routeProvider', function(router) {
+app.config(['$routeProvider', '$locationProvider', function(router, $locationProvider) {
+  $locationProvider.html5Mode(false); //maybe remove
   router
     .when('/home', {
       controller: 'HomeController',

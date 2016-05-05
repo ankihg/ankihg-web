@@ -4,14 +4,16 @@ module.exports = function(app) {
     var vm = this;
     vm.plz = 'plz respond';
 
-    vm.location = 'home';
+    vm.youarehere = 'home';
 
     vm.toProfessional = function() {
-      location = 'professional';
+      console.log('menu to prof');
+      vm.youarehere = 'professional';
       NavService.toProfessional();
     };
     vm.toHome = function() {
-      location = 'home';
+      console.log('menu to home');
+      vm.youarehere = 'home';
       NavService.toHome();
     };
 

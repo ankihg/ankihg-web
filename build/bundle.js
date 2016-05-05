@@ -57,7 +57,8 @@
 	__webpack_require__(14)(app);
 	__webpack_require__(20)(app);
 
-	app.config(['$routeProvider', function(router) {
+	app.config(['$routeProvider', '$locationProvider', function(router, $locationProvider) {
+	  $locationProvider.html5Mode(false);
 	  router
 	    .when('/home', {
 	      controller: 'HomeController',
@@ -33969,14 +33970,16 @@
 	    var vm = this;
 	    vm.plz = 'plz respond';
 
-	    vm.location = 'home';
+	    vm.youarehere = 'home';
 
 	    vm.toProfessional = function() {
-	      location = 'professional';
+	      console.log('menu to prof');
+	      vm.youarehere = 'professional';
 	      NavService.toProfessional();
 	    };
 	    vm.toHome = function() {
-	      location = 'home';
+	      console.log('menu to home');
+	      vm.youarehere = 'home';
 	      NavService.toHome();
 	    };
 
@@ -34223,8 +34226,9 @@
 	      link: function(scope, element, attrs, controller) {
 	        element.on('mouseover', function() {
 	          console.log('hover');
-	          console.log(attrs.ctrl);
-	          console.log(attrs.ctrl.location === attrs.link.name);
+	          console.log(attrs.ctrl.youarehere);
+	          console.log(attrs.link.name);
+	          console.log(attrs.ctrl.youarehere === attrs.link.name);
 	        })
 	      }
 	    }
