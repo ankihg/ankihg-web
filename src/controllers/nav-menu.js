@@ -4,13 +4,22 @@ module.exports = function(app) {
     var vm = this;
     vm.plz = 'plz respond';
 
-    vm.toProfessional = NavService.toProfessional;
-    vm.toHome = NavService.toHome;
+    vm.location = 'home';
+
+    vm.toProfessional = function() {
+      location = 'professional';
+      NavService.toProfessional();
+    };
+    vm.toHome = function() {
+      location = 'home';
+      NavService.toHome();
+    };
 
     vm.links = [
-      {name: 'home', action: vm.toHome},
-      {name: 'professional', action: vm.toProfessional}
+      {name: 'home', action: vm.toHome, url:'#/home'},
+      {name: 'professional', action: vm.toProfessional, url:'#/professional'}
     ]
+
 
     return vm;
 

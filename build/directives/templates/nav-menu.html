@@ -3,7 +3,7 @@
   <img data-ng-click="navMenuCtrl.toProfessional()" src="../../media/mtn.png" style="display:inline"> -->
 
   <span data-ng-repeat="link in navMenuCtrl.links">
-    <menu-button link="link" />
+    <menu-button link="link" ctrl="{{navMenuCtrl}}"/>
   </span>
 
 </nav>

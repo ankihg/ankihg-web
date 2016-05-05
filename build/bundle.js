@@ -33969,13 +33969,22 @@
 	    var vm = this;
 	    vm.plz = 'plz respond';
 
-	    vm.toProfessional = NavService.toProfessional;
-	    vm.toHome = NavService.toHome;
+	    vm.location = 'home';
+
+	    vm.toProfessional = function() {
+	      location = 'professional';
+	      NavService.toProfessional();
+	    };
+	    vm.toHome = function() {
+	      location = 'home';
+	      NavService.toHome();
+	    };
 
 	    vm.links = [
-	      {name: 'home', action: vm.toHome},
-	      {name: 'professional', action: vm.toProfessional}
+	      {name: 'home', action: vm.toHome, url:'#/home'},
+	      {name: 'professional', action: vm.toProfessional, url:'#/professional'}
 	    ]
+
 
 	    return vm;
 
@@ -34210,7 +34219,14 @@
 	    return {
 	      restrict: 'E',
 	      replace: true,
-	      templateUrl: './directives/templates/menu-button.html'
+	      templateUrl: './directives/templates/menu-button.html',
+	      link: function(scope, element, attrs, controller) {
+	        element.on('mouseover', function() {
+	          console.log('hover');
+	          console.log(attrs.ctrl);
+	          console.log(attrs.ctrl.location === attrs.link.name);
+	        })
+	      }
 	    }
 	  });
 	}
