@@ -13,3 +13,12 @@
   width: 100%;
   pointer-events: inherit;
 }
+#nav-menu .flag {
+  position: absolute;
+  top: -450%;
+  left: 35%;
+  width: 25%;
+  max-height: 300%;
+  height: 250%;
+  pointer-events: inherit;
+}
