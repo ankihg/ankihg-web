@@ -9,7 +9,7 @@
   position: absolute;
   text-align: center;
   top: 65%;
-  left: 0%;
+  left: -5%;
   width: 100%;
   pointer-events: inherit;
 }
@@ -20,6 +20,6 @@
   left: 35%;
   width: 25%;
   max-height: 300%;
-  height: 250%;
+  height: 270%;
   pointer-events: inherit;
 }
