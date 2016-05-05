@@ -5,13 +5,22 @@ module.exports = function(app) {
       replace: true,
       templateUrl: './directives/templates/menu-button.html',
       link: function(scope, element, attrs, controller) {
-        element.on('mouseover', function() {
-          console.log('hover');
-          var ctrl = JSON.parse(attrs.ctrl);
-          var link = JSON.parse(attrs.link);
-          // console.log(link.name);
-          console.log(ctrl.youarehere === '/'+link.name);
-        })
+        var ctrl = JSON.parse(attrs.ctrl);
+        var link = JSON.parse(attrs.link);
+        var isHere = ctrl.youarehere === '/'+link.name;
+
+        if (isHere) {
+          element.find('.flag').css('display', 'inline');
+        }
+        // element.on('mouseover', function() {
+        //   console.log('hover');
+        //   if (isHere) element.find('.flag').attr('src', '../../media/flags/flag_red.gif');
+        // })
+        //
+        // element.on('mouseleave', function() {
+        //   console.log('hover');
+        //   if (isHere) element.find('.flag').attr('src', '../../media/flags/flag_red.png');
+        // })
       }
     }
   });
