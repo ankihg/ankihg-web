@@ -70,24 +70,26 @@
 
 </div>
 
-<div class='contain-checklist'>
-   <h3><img src="../media/tree_c.png">&nbsp;&nbsp;&nbsp;<img src="../media/mtn.png"><img src="../media/tree_c.png">&nbsp; select projects by skills <img src="../media/tree_c.png">&nbsp;&nbsp;&nbsp;<img src="../media/mtn.png">&nbsp;&nbsp;<img src="../media/mtn.png"> </h3>
-   <ul id='tag-checklist'>
-     <div class="col-sm-6">
-       <li data-ng-repeat="tag in profCtrl.tags">
-         <label for="chk1"><input type="checkbox" value="{tag}" id="{tag}" data-ng-model="tag.display" data-ng-true-value="true" data-ng-false-value="false" data-ng-change="profCtrl.setProjectsByTags()"> {{tag.tag}}</label>
-       </li>
-     </div>
-   </ul>
- </div>
+<div class='row'>
+  <div class='col-sm-2 contain-checklist'>
+     <h4><img src="../media/tree_c.png">select by skill<img src="../media/tree_c.png"></h4>
+     <ul id='tag-checklist'>
+       <!-- <div class="col-sm-6"> -->
+         <li data-ng-repeat="tag in profCtrl.tags">
+           <label for="chk1"><input type="checkbox" value="{tag}" id="{tag}" data-ng-model="tag.display" data-ng-true-value="true" data-ng-false-value="false" data-ng-change="profCtrl.setProjectsByTags()"> {{tag.tag}}</label>
+         </li>
+       <!-- </div> -->
+     </ul>
+   </div>
 
-<br>
+  <!-- <div class="col-sm-1"></div> -->
 
-<section id='projects-holder'>
-  <div data-ng-repeat="project in profCtrl.displayedProjects">
-    <project project={project} />
-  </div>
-</section>
+  <section class="col-sm-9" id='projects-holder'>
+    <div data-ng-repeat="project in profCtrl.displayedProjects">
+      <project project={project} />
+    </div>
+  </section>
+</div>
 
 <span class="treeLine">
 <img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png">
