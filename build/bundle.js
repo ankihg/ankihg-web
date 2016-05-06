@@ -33996,7 +33996,7 @@
 
 	    vm.links = [
 	      {name: 'home', action: vm.toHome, path: '/home'},
-	      {name: 'mt employment', action: vm.toProfessional, path: '/professional'},
+	      {name: 'professional', action: vm.toProfessional, path: '/professional'},
 	      {name: 'coming soon', action: vm.toHome, path: '/home'},
 	    ]
 
@@ -34052,6 +34052,12 @@
 	    // }));
 
 	    vm.education = [
+	      {
+	        title: "code 401: full-stack javascript",
+	        place: "code fellows, seattle, wa",
+	        url: "https://www.codefellows.org/courses/code-401/advanced-software-development-in-full-stack-javascript",
+	        date: "spring 2016"
+	      },
 	      {
 	        title: "code 301: intermediate software development",
 	        place: "code fellows, seattle, wa",

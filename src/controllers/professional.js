@@ -40,6 +40,12 @@ module.exports = function(app) {
 
     vm.education = [
       {
+        title: "code 401: full-stack javascript",
+        place: "code fellows, seattle, wa",
+        url: "https://www.codefellows.org/courses/code-401/advanced-software-development-in-full-stack-javascript",
+        date: "spring 2016"
+      },
+      {
         title: "code 301: intermediate software development",
         place: "code fellows, seattle, wa",
         url: "https://www.codefellows.org/courses/code-301/intermediate-software-development",
