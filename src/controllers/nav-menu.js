@@ -17,7 +17,8 @@ module.exports = function(app) {
 
     vm.links = [
       {name: 'home', action: vm.toHome, path: '/home'},
-      {name: 'mt employment', action: vm.toProfessional, path: '/professional'}
+      {name: 'mt employment', action: vm.toProfessional, path: '/professional'},
+      {name: 'coming soon', action: vm.toHome, path: '/home'},
     ]
 
 

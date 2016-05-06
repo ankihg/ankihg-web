@@ -6,7 +6,7 @@
   position: relative;
   width: 90%;
   height: 90%;
-  margin-bottom: 3%;
+  margin-top: 5%;
 }
 #nav-menu h5 {
   position: absolute;
@@ -19,6 +19,7 @@
 #nav-menu .flag {
   display: none;
   position: absolute;
+  margin-top: 4%;
   top: -450%;
   left: 35%;
   width: 25%;
