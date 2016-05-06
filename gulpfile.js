@@ -6,7 +6,7 @@ const fs = require('fs');
 const sources = {
   js: __dirname + '/src/index.js',
   html: __dirname + '/src/**/*.html',
-  css: __dirname + '/src/styles/*.css',
+  css: __dirname + '/src/styles/**/*.css',
   media: __dirname + '/src/media/**/*.*',
   vendors: __dirname + '/src/vendors/*.*'
 }
