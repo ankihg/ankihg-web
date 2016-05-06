@@ -33856,8 +33856,8 @@
 	    Bird.birds = [];
 	    Bird.imgSrcs1 = ["../media/owls/owl2_1.png", "../media/owls/owl2_1.png", "../media/owls/owl1_1.png"];
 	    Bird.imgSrcs2 = ["../media/owls/owl2_2.png", "../media/owls/owl2_2.png", "../media/owls/owl1_2.png"];
-	    Bird.masterUrlLinks = ["https://seattle-skyline.herokuapp.com/", "http://zanreads.info/", "/index/19_edo_iso_keyboard/0-81", "http://willamettecollegian.com/main/", "/index/great_grammar_transformer/0-7", "/index/city_shapes/0-89", "/index/cat_flight/0-21", "/index/portland_bridges/0-92"];
-	    Bird.urlLinks = ["/index/seattle_skyline/0-78", "http://zanreads.info/", "/index/19_edo_iso_keyboard/0-81", "http://willamettecollegian.com/main/", "/index/great_grammar_transformer/0-7", "/index/city_shapes/0-89", "/index/cat_flight/0-21", "/index/portland_bridges/0-92"];
+	    Bird.masterUrlLinks = ["https://seattle-skyline.herokuapp.com/", "http://zanreads.info/", "http://ankihg.ucoz.com/index/19_edo_iso_keyboard/0-81", "http://willamettecollegian.com/main/", "http://ankihg.ucoz.com/index/great_grammar_transformer/0-7", "http://ankihg.ucoz.com/index/city_shapes/0-89", "http://ankihg.ucoz.com/index/cat_flight/0-21", "http://ankihg.ucoz.com/index/portland_bridges/0-92"];
+	    Bird.urlLinks = ["https://seattle-skyline.herokuapp.com/", "http://zanreads.info/", "http://ankihg.ucoz.com/index/19_edo_iso_keyboard/0-81", "http://willamettecollegian.com/main/", "http://ankihg.ucoz.com/index/great_grammar_transformer/0-7", "http://ankihg.ucoz.com/index/city_shapes/0-89", "http://ankihg.ucoz.com/index/cat_flight/0-21", "http://ankihg.ucoz.com/index/portland_bridges/0-92"];
 
 	    Bird.handleBirds = function() {
 	     //alert('create bird');
