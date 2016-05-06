@@ -9,16 +9,19 @@
       <project-crud project="project" />
     </li>
   </ul>
+  <br>
 
-  <form id="create-project" data-ng-submit="crudCtrl.create(project)">
-    name: <input type="text" data-ng-model="project.name">
-    url: <input type="text" data-ng-model="project.url">
-    img url: <input type="text" data-ng-model="project.imgSrc">
-    date: <input type="text" data-ng-model="project.date">
-    tags: <input type="text" data-ng-model="project.tags">
-    about: <input type="text" data-ng-model="project.about">
-    <button type="submit">create</button>
-  </form>
+  <div class='row'>
+    <form id="create-project" data-ng-submit="crudCtrl.create(project)">
+      name: <input type="text" data-ng-model="project.name">
+      url: <input type="text" data-ng-model="project.url">
+      img url: <input type="text" data-ng-model="project.imgSrc">
+      date: <input type="text" data-ng-model="project.date">
+      tags: <input type="text" data-ng-model="project.tags">
+      about: <input type="text" data-ng-model="project.about">
+      <button type="submit">create</button>
+    </form>
+  </div>
 
   <span class="treeLine">
     <img data-ng-click="crudCtrl.toProfessional()" class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png">

@@ -1,21 +1,24 @@
 <div>
   <!-- <h1>{{project.name}}</h1>
   {{project.about}} -->
-  <project project={{project}} />
+  <div class='row'>
 
+    <project project={{project}} />
+    <br>
 
-  <button type="submit" data-ng-click="crudCtrl.update.displayed = project._id; update=crudCtrl.copyProject(project)">update</button>
-  <button type="submit" data-ng-click="crudCtrl.delete(project)">delete</button>
+    <button type="submit" data-ng-click="crudCtrl.update.displayed = project._id; update=crudCtrl.copyProject(project)">update</button>
+    <button type="submit" data-ng-click="crudCtrl.delete(project)">delete</button>
 
-  <form id="create-project" data-ng-show="crudCtrl.update.displayed === project._id">
-    name: <input type="text" data-ng-model="update.name">
-    url: <input type="text" data-ng-model="update.url">
-    img url: <input type="text" data-ng-model="update.imgSrc">
-    date: <input type="text" data-ng-model="update.date">
-    tags: <input type="text" data-ng-model="update.tags">
-    about: <input type="text" data-ng-model="update.about">
-    <button data-ng-click="crudCtrl.update(update); crudCtrl.update.displayed=null">ok</button>
-    <button data-ng-click="crudCtrl.update.displayed=null">cancel</button>
-  </form>
+    <form id="create-project" data-ng-show="crudCtrl.update.displayed === project._id">
+      name: <input type="text" data-ng-model="update.name">
+      url: <input type="text" data-ng-model="update.url">
+      img url: <input type="text" data-ng-model="update.imgSrc">
+      date: <input type="text" data-ng-model="update.date">
+      tags: <input type="text" data-ng-model="update.tags">
+      about: <input type="text" data-ng-model="update.about">
+      <button data-ng-click="crudCtrl.update(update); crudCtrl.update.displayed=null">ok</button>
+      <button data-ng-click="crudCtrl.update.displayed=null">cancel</button>
+    </form>
+  </div>
 
 </div>
