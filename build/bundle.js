@@ -32987,8 +32987,8 @@
 
 	    this.create = function(project, next) {
 	      console.log('create project');
-	      if (project.tags instanceof String) project.tags = project.tags.split(',');
-	      console.log(project);
+	      if (typeof project.tags === String) project.tags = project.tags.split(',');
+	      project.tags = project.tags.toString().split(',');
 	      $http.post(path, project, {
 	        headers: {
 	          token: AuthService.getToken()
@@ -33006,7 +33006,8 @@
 
 	    this.update = function(project, next) {
 	      console.log('update project');
-	      if (project.tags instanceof String) project.tags = project.tags.split(',');
+	      if (typeof project.tags === String) project.tags = project.tags.split(',');
+	      project.tags = project.tags.toString().split(',');
 	      $http.put(path+'/'+project._id, project, {
 	        headers: {
 	          token: AuthService.getToken()
