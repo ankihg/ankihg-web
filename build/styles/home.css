@@ -208,7 +208,7 @@
 .flag-box {
 	position: fixed;
 	top: 0%;
-	left: 10%;
+	left: 8%;
 	width: 10%;
 	height: 11%;
 	#background-image: url("flag.png");
@@ -224,7 +224,7 @@
 .flag-box2 {
 	position: fixed;
 	top: 22%;
-	left: 9%;
+	left: 7%;
 	width: 10%;
 	height: 11%;
 	#background-image: url("flag.png");
@@ -240,7 +240,7 @@
 .flag-box3 {
 	position: fixed;
 	top: 43.5%;
-	left: 9%;
+	left: 7%;
 	width: 10%;
 	height: 11%;
 	#background-image: url("flag.png");
@@ -256,7 +256,7 @@
 .flag-box4 {
 	position: fixed;
 	top: 71%;
-	left: 17%;
+	left: 15%;
 	width: 10%;
 	height: 11%;
 	#background-image: url("flag.png");
