@@ -55,7 +55,15 @@ module.exports = function(app) {
 
     vm.toHome = function() {
       return NavService.toHome();
-    }
+    };
+
+    vm.toCrud = function() {
+      return NavService.toCrud();
+    };
+
+    vm.toSignin = function() {
+      return NavService.toSignin();
+    };
 
     return vm;
   }])

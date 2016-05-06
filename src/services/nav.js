@@ -13,6 +13,14 @@ module.exports = function(app) {
       $location.path('/home');
     };
 
+    this.toCrud = function() {
+      $location.path('/project-crud');
+    };
+
+    this.toSignin = function() {
+      $location.path('/signin');
+    };
+
     return this;
   }]);
 }

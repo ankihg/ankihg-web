@@ -33086,6 +33086,14 @@
 	      $location.path('/home');
 	    };
 
+	    this.toCrud = function() {
+	      $location.path('/project-crud');
+	    };
+
+	    this.toSignin = function() {
+	      $location.path('/signin');
+	    };
+
 	    return this;
 	  }]);
 	}
@@ -34059,7 +34067,15 @@
 
 	    vm.toHome = function() {
 	      return NavService.toHome();
-	    }
+	    };
+
+	    vm.toCrud = function() {
+	      return NavService.toCrud();
+	    };
+
+	    vm.toSignin = function() {
+	      return NavService.toSignin();
+	    };
 
 	    return vm;
 	  }])
