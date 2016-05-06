@@ -80,7 +80,8 @@ module.exports = function(app) {
     }
 
     this.getTags = function() {
-      return tags || calcTags();
+      return calcTags();
+      // return tags || calcTags();
     }
 
     var calcTags = function() {

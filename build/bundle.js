@@ -33045,7 +33045,8 @@
 	    }
 
 	    this.getTags = function() {
-	      return tags || calcTags();
+	      return calcTags();
+	      // return tags || calcTags();
 	    }
 
 	    var calcTags = function() {
@@ -34118,7 +34119,7 @@
 /***/ function(module, exports) {
 
 	module.exports = function(app) {
-	  app.controller('ProjectCrudController', ['ProjectService', function(ProjectService, CrudService) {
+	  app.controller('ProjectCrudController', ['ProjectService', 'NavService', function(ProjectService, NavService) {
 
 	    var vm = this;
 	    vm.projects = null;
@@ -34155,6 +34156,8 @@
 	    vm.copyProject = function(project) {
 	      return JSON.parse(JSON.stringify(project));
 	    }
+
+	    vm.toProfessional = NavService.toProfessional;
 
 
 	    return vm;
