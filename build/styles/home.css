@@ -1,5 +1,9 @@
 #home {
   overflow: hidden;
+  font-family: "Times";
+  font-size: 125%;
+  /*font-weight: bold;*/
+  /*line-height: 75%;*/
 }
 
 #canvasWrap {
