@@ -11,7 +11,7 @@ module.exports = function(app) {
 
     var intervals = [];
 
-    $window.alert("10/10 users say best experienced with full screen");
+    // $window.alert("10/10 users say best experienced with full screen");
 
     $scope.$on('$locationChangeStart', function(e) {
       console.log('are you leaving?');
