@@ -1,13 +1,13 @@
 <div class="row project" id="{{id}}">
-<div class="col-sm-6">
-<a href="{{project.url}}" target="_blank"><img src="{{project.imgSrc}}">
-</div>
-<div class="col-sm-6 project-txt">
-<h2>{{project.name}}</h2></a>
-<div>{{project.dateStr}}</div>
-<div>{{project.tagsStr}}</div>
-<br/>
-<span data-ng-bind-html="project.about"></span>
-<!-- <div ng-bind-html-unsafe="<h1>plz</h1>"></div> -->
-</div>
+  <div class="col-sm-6">
+    <a href="{{project.url}}" target="_blank"><img src="{{project.imgSrc}}"></a>
+    <div><small>{{project.tagsStr}}</small></div>
+  </div>
+  <div class="col-sm-6 project-txt">
+    <a href="{{project.url}}" target="_blank"><h2>{{project.name}}</h2></a>
+    <div>{{project.dateStr}}</div>
+    <br/>
+    <span data-ng-bind-html="project.about"></span>
+    <!-- <div ng-bind-html-unsafe="<h1>plz</h1>"></div> -->
+  </div>
 </div>
