@@ -6,12 +6,21 @@ module.exports = function(app) {
     var projects = null;
     var tags = null;
 
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+
     this.getProjects = function(next) {
       if (projects) return (next) ? next(projects) : projects;
       $http.get(path)
         .then(res => {
           console.log(res.data);
           projects = res.data.data;
+          projects = projects.map((project) => {
+            project.date = new Date(project.date);
+            project.dateStr = monthNames[project.date.getMonth()] +' '+ project.date.getFullYear();
+            project.tagsStr = project.tags.reduce((str, tag) => str+'#'+tag+' ', '');
+            return project;
+          });
           calcTags();
           if (next) next(projects);
         })
