@@ -5,7 +5,7 @@
   "main": "server-manager.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server-manager.js"
+    "start": "node squashed-server.js"
   },
   "repository": {
     "type": "git",
