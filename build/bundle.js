@@ -32854,10 +32854,18 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {exports.DB_PORT = process.env.MY_DB_URI || 'mongodb://localhost/db';
-	exports.serverPort = 3000;
-	exports.clientServerPort = 8080;
+	// exports.serverPort = 3000;
+	// exports.clientServerPort = process.env.PORT || 8080;
 
-	exports.serverUrl = 'http://localhost:'+exports.serverPort;
+	// exports.serverUrl = 'http://localhost:'+exports.serverPort;
+	// exports.clientServerUrl = 'http://localhost:'+exports.clientServerPort;
+
+	//squashed server
+	exports.PORT = process.env.PORT || 8080;
+	exports.serverPort = exports.PORT;
+	exports.clientServerPort = exports.PORT;
+
+	exports.serverUrl = '';
 	exports.clientServerUrl = 'http://localhost:'+exports.clientServerPort;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))

@@ -6,9 +6,9 @@ exports.DB_PORT = process.env.MY_DB_URI || 'mongodb://localhost/db';
 // exports.clientServerUrl = 'http://localhost:'+exports.clientServerPort;
 
 //squashed server
-exports.PORT = process.env.PORT;
+exports.PORT = process.env.PORT || 8080;
 exports.serverPort = exports.PORT;
 exports.clientServerPort = exports.PORT;
 
-exports.serverUrl = 'http://localhost:'+exports.serverPort;
+exports.serverUrl = '';
 exports.clientServerUrl = 'http://localhost:'+exports.clientServerPort;
