@@ -21,6 +21,7 @@ module.exports = function(app) {
             project.tagsStr = project.tags.reduce((str, tag) => str+'#'+tag+' ', '');
             return project;
           });
+          projects.sort((a,b) => b.date - a.date);
           calcTags();
           if (next) next(projects);
         })

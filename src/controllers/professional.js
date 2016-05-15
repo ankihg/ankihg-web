@@ -40,22 +40,16 @@ module.exports = function(app) {
 
     vm.education = [
       {
-        title: "code 401: full-stack javascript",
+        title: "full-stack javascript certification",
         place: "code fellows, seattle, wa",
         url: "https://www.codefellows.org/courses/code-401/advanced-software-development-in-full-stack-javascript",
-        date: "spring 2016"
+        date: "january - may 2016"
       },
       {
-        title: "code 301: intermediate software development",
-        place: "code fellows, seattle, wa",
-        url: "https://www.codefellows.org/courses/code-301/intermediate-software-development",
-        date: "january 2016"
-      },
-      {
-        title:   "bachelor's degree in computer science",
+        title: "bachelor's degree in computer science",
         place: "willamette university, salem, or",
         url: "http://www.willamette.edu/cla/cs/",
-        date: "2011 - 2015"
+        date: "august 2011 - may 2015"
       }
     ];
 
