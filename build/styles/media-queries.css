@@ -6,6 +6,17 @@
     display: block;
   }
 }
+
+@media (max-width:698px) {
+  #skill-filter {
+    height: 150px;
+    text-align: center;
+  }
+  #contain-education {
+    text-align: center;
+  }
+}
+
 body {
-  background-color: #aaffaa;
+  background-color: #aaccaa;
 }
