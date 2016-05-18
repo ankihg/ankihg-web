@@ -4,14 +4,23 @@
 }
 #nav-menu .image {
   position: relative;
-  width: 90%;
-  height: 90%;
+  /*width: 90%;*/
+  /*height: 90%;*/
   margin-top: 5%;
+  max-width: 30%;
+  max-height: 90%;
+}
+#nav-menu .image img {
+  padding-top: 5%;
+  /*max-width: 100%;*/
+  /*width:30%;*/
+  width: 30%;
 }
 #nav-menu h5 {
   position: absolute;
   text-align: center;
-  top: 65%;
+  padding-top: 5%;
+  top: 10%;
   left: -5%;
   width: 100%;
   pointer-events: inherit;
@@ -20,10 +29,10 @@
   display: none;
   position: absolute;
   margin-top: 4%;
-  top: -450%;
-  left: 35%;
+  top: -480%;
+  left: 32%;
   width: 25%;
-  max-height: 300%;
-  height: 270%;
+  max-height: 400%;
+  height: 400%;
   pointer-events: inherit;
 }
