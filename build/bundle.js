@@ -60,6 +60,12 @@
 	app.config(['$routeProvider', '$locationProvider', function(router, $locationProvider) {
 	  $locationProvider.html5Mode(false); //maybe remove
 	  router
+	    .when('/', {
+	      controller: 'ProfessionalController',
+	      controllerAs: 'profCtrl',
+	      templateUrl: './views/professional.html',
+	      css: ['./styles/base.css', './styles/layout.css', './styles/nav-menu.css', './styles/vendors/bootstrap.min.css', './styles/media-queries.css']
+	    })
 	    .when('/home', {
 	      controller: 'HomeController',
 	      controllerAs: 'homeCtrl',
