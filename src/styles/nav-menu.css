@@ -36,3 +36,18 @@
   height: 400%;
   pointer-events: inherit;
 }
+
+#min-nav-menu {
+  display: none;
+}
+#min-nav-menu img {
+  display: inline;
+  width: 7%;
+  height: 7%;
+}
+#min-nav-menu .flag {
+  display: none;
+}
+.min-menu-button {
+  margin-left: 5%;
+}

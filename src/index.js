@@ -24,7 +24,7 @@ app.config(['$routeProvider', '$locationProvider', function(router, $locationPro
       controller: 'ProfessionalController',
       controllerAs: 'profCtrl',
       templateUrl: './views/professional.html',
-      css: ['./styles/base.css', './styles/layout.css', './styles/nav-menu.css', './styles/vendors/bootstrap.min.css']
+      css: ['./styles/base.css', './styles/layout.css', './styles/nav-menu.css', './styles/vendors/bootstrap.min.css', './styles/media-queries.css']
     })
     .when('/project-crud', {
       controller: 'ProjectCrudController',

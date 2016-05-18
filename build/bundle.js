@@ -70,7 +70,7 @@
 	      controller: 'ProfessionalController',
 	      controllerAs: 'profCtrl',
 	      templateUrl: './views/professional.html',
-	      css: ['./styles/base.css', './styles/layout.css', './styles/nav-menu.css', './styles/vendors/bootstrap.min.css']
+	      css: ['./styles/base.css', './styles/layout.css', './styles/nav-menu.css', './styles/vendors/bootstrap.min.css', './styles/media-queries.css']
 	    })
 	    .when('/project-crud', {
 	      controller: 'ProjectCrudController',
@@ -34188,6 +34188,8 @@
 	  __webpack_require__(23)(app);
 	  __webpack_require__(24)(app);
 	  __webpack_require__(25)(app);
+	  __webpack_require__(26)(app);
+	  __webpack_require__(27)(app);
 
 	}
 
@@ -34281,6 +34283,48 @@
 	        //   console.log('hover');
 	        //   if (isHere) element.find('.flag').attr('src', '../../media/flags/flag_red.png');
 	        // })
+	      }
+	    }
+	  });
+	}
+
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	module.exports = function(app) {
+	  app.directive('minNavMenu', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/min-nav-menu.html',
+	      controller: 'NavMenuController',
+	      controllerAs: 'navMenuCtrl'
+	    }
+	  });
+	}
+
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	module.exports = function(app) {
+	  app.directive('minMenuButton', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/min-menu-button.html',
+	      link: function(scope, element, attrs, controller) {
+	        var ctrl = JSON.parse(attrs.ctrl);
+	        var link = JSON.parse(attrs.link);
+	        var isHere = ctrl.youarehere === link.path;
+
+	        if (isHere) {
+	          element.find('.flag').css('display', 'inline');
+	        }
+
 	      }
 	    }
 	  });

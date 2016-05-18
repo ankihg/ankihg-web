@@ -1,0 +1,8 @@
+<nav id="min-nav-menu">
+  <!-- <img data-ng-click="navMenuCtrl.toHome()" src="../../media/mtn.png" style="display:inline">
+  <img data-ng-click="navMenuCtrl.toProfessional()" src="../../media/mtn.png" style="display:inline"> -->
+  <span data-ng-repeat="link in navMenuCtrl.links">
+    <min-menu-button link="{{link}}" ctrl="{{navMenuCtrl}}"/>
+  </span>
+
+</nav>
