@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="./styles/vendors/bootstrap.min.css">
-<section data-ng-init="profCtrl.getProjects()">
+<section id="professional" data-ng-init="profCtrl.getProjects()">
 <div class="container">
- <div class="jumbotron">
+ <div id="jumbo" class="jumbotron">
 <div class="row">
 <div class="col-sm-6">
  <h1 id='name'>Annika Hagelin</h1>
@@ -29,14 +29,14 @@
 <main>
 
 <div class='row'>
-<div id='contain-education' class="col-sm-4">
+<div id='contain-education' class="col-sm-4 box">
   <h3><img src="../media/tree_c.png"> education <img src="../media/tree_c.png"></h3>
   <div data-ng-repeat="education in profCtrl.education">
     <education education={education} />
   </div>
 </div>
 
-<div id='contain-technical-skills' class="col-sm-7">
+<div id='contain-technical-skills' class="col-sm-7 box">
   <h3><img src="../media/mtn.png"><img src="../media/tree_c.png"> technical skills <img src="../media/mtn.png"><img src="../media/tree_c.png"></h3>
   <ul>
     <li type="square">Server-side: Node, Express, MongoDB, REST APIs</li>
@@ -50,7 +50,7 @@
 </div>
 
 <div class='row'>
-  <div id="skill-filter" class='col-sm-2 contain-checklist'>
+  <div id="skill-filter" class='col-sm-2 contain-checklist box'>
      <h4><img src="../media/tree_c.png">select by skill<img src="../media/tree_c.png"></h4>
      <ul id='tag-checklist'>
        <!-- <div class="col-sm-6"> -->
@@ -61,11 +61,9 @@
      </ul>
    </div>
 
-  <!-- <div class="col-sm-1"></div> -->
-
   <section class="col-sm-9" id='projects-holder'>
     <div data-ng-repeat="project in profCtrl.displayedProjects">
-      <project project={project} />
+      <project class="box" project={project} />
     </div>
   </section>
 </div>
@@ -74,7 +72,7 @@
 <img data-ng-click="profCtrl.toSignin()" class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png"><img class="inlImg" src="../media/tree_c.png">
 </span>
 <span id='farewell'>
-<a href='http://ankihg.ucoz.com'>Thank you for visiting</a>
+<a href='http://ankihg.herokuapp.com/#/home'>Thank you for visiting</a>
 </span>
 
 </main>

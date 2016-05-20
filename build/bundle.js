@@ -64,7 +64,7 @@
 	      controller: 'ProfessionalController',
 	      controllerAs: 'profCtrl',
 	      templateUrl: './views/professional.html',
-	      css: ['./styles/base.css', './styles/layout.css', './styles/nav-menu.css', './styles/vendors/bootstrap.min.css', './styles/media-queries.css']
+	      css: ['./styles/vendors/bootstrap.min.css', './styles/base.css', './styles/layout.css', './styles/nav-menu.css', './styles/media-queries.css']
 	    })
 	    .when('/home', {
 	      controller: 'HomeController',
@@ -76,13 +76,13 @@
 	      controller: 'ProfessionalController',
 	      controllerAs: 'profCtrl',
 	      templateUrl: './views/professional.html',
-	      css: ['./styles/base.css', './styles/layout.css', './styles/nav-menu.css', './styles/vendors/bootstrap.min.css', './styles/media-queries.css']
+	      css: ['./styles/vendors/bootstrap.min.css', './styles/base.css', './styles/layout.css', './styles/nav-menu.css', './styles/media-queries.css']
 	    })
 	    .when('/project-crud', {
 	      controller: 'ProjectCrudController',
 	      controllerAs: 'crudCtrl',
 	      templateUrl: './views/project-crud.html',
-	      css: ['./styles/base.css', './styles/layout.css', './styles/vendors/bootstrap.min.css']
+	      css: ['./styles/vendors/bootstrap.min.css', './styles/base.css', './styles/layout.css']
 	    })
 	    .when('/signin', {
 	      controller: 'UserController',

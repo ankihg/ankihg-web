@@ -1,5 +1,27 @@
+body {
+  overflow-x: hidden;
+}
+
+#professional {
+  background-color: rgb(55, 127, 65);
+}
+
+.box {
+  border:6px solid #ccc;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  background-color: rgba(200, 200, 200, 0.5);;
+}
+
 .container {
     #background-color: #808080;
+}
+
+#jumbo {
+  background-color: #ccc;
+  /*background-color: rgb(17, 71, 23);*/
+
 }
 
 .jumboSmallText {
@@ -47,11 +69,20 @@ p {
 }
 
 .project {
-  float: right;
-  margin-left: 2%;
+  /*float: right;*/
+  /*margin-left: 2%;*/
+  margin-right: 0%;
+  margin-left: 0%;
   margin-bottom: 1%;
   border:6px solid #ccc;
-  padding: 4px;
+  padding: 1%;
+  /*padding-left: 4px;*/
+}
+#projects-holder {
+  float: right;
+  margin-left: 2%;
+  margin-right: 2%;
+  /*margin: auto;*/
 }
 
 .jumbotron a {
@@ -69,6 +100,7 @@ p {
   /*background-image:url("media/tree3_c.png");*/
   margin-left: 2%;
   margin-right: 2%;
+  /*margin: auto;*/
   border:6px solid #ccc;
   /*width:95%;*/
   /*height: 180px;*/
@@ -102,7 +134,7 @@ footer {
 }
 
 #contain-education {
-  margin: 2%;
+  /*margin: 2%;*/
   border:6px
   solid #ccc;
   height: 180px;
@@ -117,7 +149,7 @@ footer {
 
 #contain-technical-skills {
   float: right;
-  margin: 2%;
+  /*margin: 2%;*/
   border:6px
   solid #ccc;
   height: 180px;
