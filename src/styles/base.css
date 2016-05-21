@@ -1,8 +1,8 @@
 body {
   overflow-x: hidden;
-  background-image: url("../media/wilderness.gif");
+  /*background-image: url("../media/wilderness.gif");
   background-attachment: fixed;
-  	background-size: cover;
+  	background-size: cover;*/
   /*background-color: rgb(55, 127, 65);*/
 }
 
@@ -13,9 +13,9 @@ body {
 
 #professional {
   /*background-color: rgb(55, 127, 65);*/
-  background-image: url("../media/wilderness.gif");
+  /*background-image: url("../media/wilderness.gif");
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover;*/
 }
 
 .box {
@@ -36,6 +36,8 @@ body {
 
 #jumbo {
   background-color: #DABFFF;
+  /*background-color: rgb(218, 191, 255);*/
+  /*color: #FFFFFF;*/
     /*background-color: rgb(17, 71, 23);*/
 
 }
