@@ -2,6 +2,8 @@ module.exports = function(app) {
 
   app.controller('ProfessionalController', ['$scope', 'ProjectService', 'NavService', function($scope, ProjectService, NavService) {
 
+    $scope.pageClass = 'page-professional';
+
     var vm = this;
     vm.tags = null;
     vm.allProjects = null;

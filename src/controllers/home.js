@@ -4,6 +4,8 @@ module.exports = function(app) {
 
   app.controller('HomeController', ['$window', '$scope', '$interval', 'NavService', function($window, $scope, $interval, NavService) {
 
+    $scope.pageClass = 'page-home';
+
     var vm = this;
     vm.toProfessional = function() {
       return NavService.toProfessional();

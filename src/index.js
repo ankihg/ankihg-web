@@ -2,10 +2,11 @@
 const angular = require('angular');
 require('angular-route');
 require('angular-sanitize');
+require('angular-animate');
 require('../bower_components/angular-route-styles/route-styles.js')
 // require('style!css!./styles/home.css');
 
-const app = angular.module('AnkiApp', ['ngRoute', 'routeStyles', 'ngSanitize']);
+const app = angular.module('AnkiApp', ['ngRoute', 'routeStyles', 'ngSanitize', 'ngAnimate']);
 
 require('./services/index.js')(app);
 require('./controllers/index.js')(app);
@@ -18,7 +19,7 @@ app.config(['$routeProvider', '$locationProvider', function(router, $locationPro
       controller: 'ProfessionalController',
       controllerAs: 'profCtrl',
       templateUrl: './views/professional.html',
-      css: ['./styles/vendors/bootstrap.min.css', './styles/base.css', './styles/layout.css', './styles/nav-menu.css', './styles/media-queries.css']
+      css: ['./styles/vendors/bootstrap.min.css', './styles/animation.css', './styles/base.css', './styles/layout.css', './styles/nav-menu.css', './styles/media-queries.css']
     })
     .when('/home', {
       controller: 'HomeController',

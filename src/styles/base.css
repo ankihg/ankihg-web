@@ -1,9 +1,21 @@
 body {
   overflow-x: hidden;
+  background-image: url("../media/wilderness.gif");
+  background-attachment: fixed;
+  	background-size: cover;
+  /*background-color: rgb(55, 127, 65);*/
 }
 
+.page-professional.ng-enter           { animation: slideInRight 0.5s both ease-in; z-index: 8888; }
+/*.page-home.ng-enter           { animation: slideInUp 0.5s both ease-in; z-index: 8888; }*/
+/*.page-professional.ng-leave           { animation: scaleDown 0.5s both ease-in; z-index: 9999; }*/
+
+
 #professional {
-  background-color: rgb(55, 127, 65);
+  /*background-color: rgb(55, 127, 65);*/
+  background-image: url("../media/wilderness.gif");
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .box {
@@ -12,7 +24,9 @@ body {
   margin-left: 2%;
   margin-right: 2%;
   margin-bottom: 2%;
-  background-color: rgba(200, 200, 200, 0.5);;
+  /*background-color: rgba(200, 200, 200, 0.5);;*/
+  background-color: rgba(200, 200, 200, 0.8);;
+
 }
 
 
