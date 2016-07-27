@@ -12,3 +12,4 @@ exports.clientServerPort = exports.PORT;
 
 exports.serverUrl = '';
 exports.clientServerUrl = 'http://localhost:'+exports.clientServerPort;
+exports.clientServerUrl2 = 'http://annikahagelin.com';
